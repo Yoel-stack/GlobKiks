@@ -14,7 +14,6 @@ interface Props {
 }
 
 
-
 export const ProductGridItem = ({ product }:Props ) => {
 
     const [displayImage, setDisplayImage] = useState (product.images[0]);  
@@ -23,7 +22,7 @@ export const ProductGridItem = ({ product }:Props ) => {
 
         /* Propiedad de bootstrap, padding de 4 a todos los lados y bordes redondeados a las imagenes */
 
-        <div className="ml-3 p-2 rounded-md">
+        <div className="place-items-center ml-3 p-2 rounded-md">
             <Image
             src={`/products/${ displayImage }`}
             alt={ product.title }
@@ -33,7 +32,7 @@ export const ProductGridItem = ({ product }:Props ) => {
             onMouseEnter={ () => setDisplayImage(product.images[1])}
             onMouseLeave={ () => setDisplayImage(product.images[0])}
             />
-            <div className="p-2 flex flex-co">
+            <div className="p-2 flex">
                 <Link className="text-decoration-none text-black"
                 href={`/product/${ product.slug }`}>
                 { product.title }

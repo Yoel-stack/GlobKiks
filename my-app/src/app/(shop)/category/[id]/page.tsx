@@ -12,25 +12,23 @@ interface Props {
 
 export default function categoryPage({ params }: Props) {
   const { id } = params;
-  const products = categoryProducts.filter( product => product.gender === id );
-  
-const idS = {
-    'mujeres': 'para mujeres',
-    'hombres': 'para hombres',
-    'unisex': 'unisex'
-  }
+  const products = categoryProducts.filter((product) => product.gender === id);
+
+  const idS = {
+    mujeres: "para mujeres",
+    hombres: "para hombres",
+    unisex: "unisex",
+  };
 
   return (
     <>
-        <Title 
-            title={ `Articulos ${idS[id]}`}
-            subtitle= "Todos los championes"
-            className = " "      
-            />
-            <ProductGrid
-            products = { products }
-            />
+      <Title
+        title={`Articulos ${idS[id]}`}
+        subtitle="Todos los championes"
+        className=" "
+      />
+      <ProductGrid products={products} />
     </>
-  )
+  );
 }
 

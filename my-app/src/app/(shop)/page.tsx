@@ -1,5 +1,4 @@
-import { geistSans, titleFont } from "@/config/fonts";
-import Image from "next/image";
+// import { geistSans, titleFont } from "@/config/fonts";
 import { ProductGrid, Title } from "@/components";
 import { initialData } from "@/seed";
 

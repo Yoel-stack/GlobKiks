@@ -1,12 +1,28 @@
+'use client'
+
 import type { ValidSizes } from "@/interfaces";
 import clsx from 'clsx';
+import { useEffect, useState } from "react";
 
-interface Props {
+interface SizeProps {
     selectedSize: ValidSizes;
     avaliableSize: ValidSizes[];
+    onChange: (sizes: ValidSizes) => void;
+
 }
 
-export const SizeSelect = ({ selectedSize, avaliableSize}: Props) => {
+export const SizeSelect = ({ selectedSize, avaliableSize, onChange }: SizeProps) => {
+    const [currentSize, setCurrentSize] = useState<ValidSizes>(selectedSize);
+    
+    useEffect(() => {
+        setCurrentSize(selectedSize);
+    }, [selectedSize]);
+
+    const handleSiseChange = (sizes: ValidSizes) => {
+        setCurrentSize(sizes);
+        onChange(sizes);
+    }
+
     return(
         <div className='my-4'>
             <h3 className='font-bold mb-2'>Talles disponibles</h3>
@@ -15,11 +31,12 @@ export const SizeSelect = ({ selectedSize, avaliableSize}: Props) => {
                     avaliableSize.map( sizes => (
                         <button 
                         key={sizes}
+                        onClick={() => handleSiseChange(sizes)}
                         className={
                             clsx(
                                 'mx-2 hover:underline text-lg',
                                 {
-                                    'underline': sizes === selectedSize
+                                    'underline': sizes === currentSize,
                                 }
                             )
                         }                   

@@ -1,33 +1,38 @@
 'use client'; 
 
 import React from 'react'
-import { IoAdd, IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from 'react-icons/io5';
+import { IoAdd, IoCloseOutline, IoLogInOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from 'react-icons/io5';
 import Link from 'next/link';
 import clsx from 'clsx'; 
 import { useUIStore } from '@/store';
+import { ClerkProvider } from '@clerk/nextjs';
+import {  SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+
 
 export const Sidebar = () => {
-
+    
     const isSideMenuOpen = useUIStore ( state => state.isSideMenuOpen);
     const closeMenu = useUIStore ( state => state.closeSideMenu);
     return (
+        <ClerkProvider>
+
         <div>
 
             {/* Background black */}
             {
                 isSideMenuOpen && (                    
                     <div 
-                        className='fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30'/>
-                        
+                    className='fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30'/>
+                    
                 )
             }
             {/* Blur */}
             {
                 isSideMenuOpen && (                    
                     <div 
-                        onClick={()=> closeMenu ( )}
-                        className='fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm'/>
-                        
+                    onClick={()=> closeMenu ( )}
+                    className='fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm'/>
+                    
                 )
             }
 
@@ -56,44 +61,40 @@ export const Sidebar = () => {
                         type='text'
                         placeholder='Buscar'
                         className="w-full bg-gray-50 rounded pl-3 border-b-2 text-xl border-gray-500 focus:outline-none focus:border-blue-500"
-                    />
+                        />
             </div>
 
             {/* Menu */}
-            <Link
-            href="/"
-            className="flex items-center mt-10 p-0 hover:bg-gray-200 text-black text-decoration-none rounded transition-all"
-            >
+
+            <nav className="flex p-1 items-center mt-10 p-0 
+            hover:bg-gray-200 text-black text-decoration-none 
+            rounded transition-all" >
+                <SignedOut>
+                <IoLogInOutline size={ 20 } />
+                <span className='ml-3 text-xl'>
+                <SignUpButton>
+                </SignUpButton>
+                </span>
+                </SignedOut>
+                <SignedIn>
                 <IoPersonOutline size={ 20 } />
-                <span className='ml-3 text-xl'>Perfil</span>
-            </Link>  
+                <span className='mx-2.5 cursor-pointer ml-3 text-xl'>
+                    Perfil
+                </span>
+                <UserButton />
+                </SignedIn>
+            </nav>
 
             <Link
-            href="/"
-            className="flex items-center mt-10 p-0 hover:bg-gray-200 text-black text-decoration-none rounded transition-all"
+            href="/orders"
+            className="flex items-center p-1 mt-4 p-0 hover:bg-gray-200 text-black text-decoration-none rounded transition-all"
             >
                 <IoTicketOutline size={ 20 } />
                 <span className='ml-3 text-xl'>Ordenes</span>
-            </Link> 
-
-            <Link
-            href="/"
-            className="flex items-center mt-10 p-0 hover:bg-gray-200 text-black text-decoration-none rounded transition-all"
-            >
-                <IoLogInOutline size={ 20 } />
-                <span className='ml-3 text-xl'>Ingresar</span>
-            </Link> 
-
-            <Link
-            href="/"
-            className="flex items-center mt-10 p-1 hover:bg-gray-200 text-black text-decoration-none rounded transition-all"
-            >
-                <IoLogOutOutline size={ 20 } />
-                <span className='ml-3 text-xl'>Salir</span>
-            </Link>      
+            </Link>
 
              {/* Menu */}
-            <div className='w-full mt-4 h-px bg-gray-500'></div>
+            <div className='w-full mt-4 h-px bg-gray-500'></div> {/* REVISAR PARA QUE FUNCIONA */}
 
             <Link
             href="/"
@@ -108,7 +109,7 @@ export const Sidebar = () => {
             className="flex items-center mt-4 p-1 hover:bg-gray-200 text-black text-decoration-none rounded transition-all"
             >
                 <IoTicketOutline size={ 20 } />
-                <span className='ml-3 text-xl'>Ordenes</span>
+                <span className='ml-3 text-xl'>Descuentos</span>
             </Link>      
 
             <Link
@@ -122,5 +123,6 @@ export const Sidebar = () => {
             </nav>
 
         </div>
+    </ClerkProvider>
     )
 }

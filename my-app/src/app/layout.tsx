@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { titleFont } from "@/config/fonts";
+import { ClerkProvider } from '@clerk/nextjs';
+import { AddressProvider, CartProvider, OrderProvider } from "@/components";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { geistSans, titleFont } from "@/config/fonts";
-
 
 export const metadata: Metadata = {
   title: "Shoes Shop",
@@ -15,12 +16,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body
-        className={`${titleFont.className} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <OrderProvider>
+      <ClerkProvider>
+        <html lang="es">
+          <body className={`${titleFont.className} antialiased`}>
+            <AddressProvider>
+              <CartProvider>{children}</CartProvider>
+            </AddressProvider>
+          </body>
+        </html>
+      </ClerkProvider>
+    </OrderProvider>
   );
 }
