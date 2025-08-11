@@ -31,7 +31,7 @@ return (
             <IoRemoveCircleOutline size={ 25 } />
 
         </button>
-        <span className="mx-2 px-4 bg-gray-200 text-center rounded">
+        <span className="mx-2 px-4 bg-gray-300 dark:bg-gray-800 text text-center rounded">
             { count }
         </span>
         <button className="mx-1" onClick={ () => onQuantityCount( 1 )}>

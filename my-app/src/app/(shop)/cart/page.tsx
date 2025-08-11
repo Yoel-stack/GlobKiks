@@ -17,7 +17,7 @@ export default function CartPage() {
   // redirect('/empty'); //te lleva denuevo al carrito de compras vacio, redirecciona 
   
   return (
-    <div className="flex justify-center items-start px-4 py-8">
+    <div className="flex text justify-center items-start px-4 py-8">
       <div className="w-full max-w-4xl">
       <Title title="Carrito" />
 
@@ -31,7 +31,7 @@ export default function CartPage() {
           {cart.map(ci => (
             <div
             key={ci.slug}
-              className="flex items-center bg-white shadow rounded-lg p-4"
+              className="flex cardcolor items-center shadow rounded-lg p-4"
             >
               {/* Imagen */}
               <Image
@@ -45,7 +45,7 @@ export default function CartPage() {
               {/* Detalles */}
               <div className="flex-1">
                 <h3 className="font-semibold text-lg">{ci.title}</h3>
-                <p className="text-gray-500">Talla: {ci.selectedSize}</p>
+                <p className="textslow text-gray-500">Talla: {ci.selectedSize}</p>
               </div>
 
               {/* Selector de cantidad + botón eliminar */}
@@ -73,7 +73,7 @@ export default function CartPage() {
         </div>
 
         {/* Total general */}
-        <div className="mt-8 bg-white shadow rounded-lg p-6">
+        <div className="mt-8 text layerblack shadow rounded-lg p-6">
           <div className="grid grid-cols-2 gap-y-2">
             <span>No. Productos:</span>
             <span className="text-right">{totalItems}</span>

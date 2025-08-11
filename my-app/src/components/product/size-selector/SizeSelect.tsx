@@ -34,7 +34,7 @@ export const SizeSelect = ({ selectedSize, avaliableSize, onChange }: SizeProps)
                         onClick={() => handleSiseChange(sizes)}
                         className={
                             clsx(
-                                'mx-2 hover:underline text-lg',
+                                'mx-2 textslow hover:underline text-lg',
                                 {
                                     'underline': sizes === currentSize,
                                 }

@@ -17,3 +17,7 @@ export * from './context/CartContext';
 export * from './context/AddressContext';
 
 export * from './orderContext/OrderContext';
+
+export * from './searchsidebar/SearchSideBar';
+
+export * from './theme/ThemeProvider';

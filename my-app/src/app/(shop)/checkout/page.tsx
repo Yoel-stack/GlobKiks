@@ -32,7 +32,7 @@ export default function CheckoutPage() {
   const { address } = useAddress();
 
   return (
-    <div className="flex justify-center items-start px-4 py-8">
+    <div className="flex text justify-center items-start px-4 py-8">
       <div className="w-full max-w-4xl space-y-8">
         <nav className="mb-1 ">
           <Title title="Verificar Orden" />
@@ -46,12 +46,12 @@ export default function CheckoutPage() {
         </div>
         
         {/* 🛒 Sección de carrito en columna */}
-        <div className="bg-white shadow rounded-lg p-6 space-y-6">
-          <p className="text-sm my-2 text-gray-500">Tus productos</p>
+        <div className="layerblack shadow rounded-lg p-6 space-y-6">
+          <p className="text-sm my-2 textslow">Tus productos</p>
           {cart.map((ci) => (
             <div
               key={ci.slug}
-              className="flex items-center bg-gray-50 rounded-lg p-4"
+              className="flex items-center cardcolor rounded-lg p-4"
             >
               <Image
                 src={`/products/${ci.images[0]}`}
@@ -62,7 +62,7 @@ export default function CheckoutPage() {
               />
               <div className="flex-1">
                 <h3 className="font-semibold text-lg">{ci.title}</h3>
-                <p className="text-gray-500">Talla: {ci.selectedSize}</p>
+                <p className="textslow">Talla: {ci.selectedSize}</p>
               </div>
               <div className="flex flex-col items-center mr-4">
                 <QuantitySelector
@@ -91,7 +91,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* 📦 Resumen de Orden */}
-        <div className="bg-white shadow rounded-lg p-6 space-y-4">
+        <div className="layerblack shadow rounded-lg p-6 space-y-4">
           <h2 className="text-2xl font-bold">Dirección de entrega</h2>
           <div className="mb-4">
             <p className="text-xl">

@@ -4,47 +4,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Activar las clases dark: “se activa con `.dark` */
+@custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --primary: #274494;
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@theme {
+  --navbar-color: 51 56 71;
+  --primary-channel: 39 68 148;
+  --foreground-rgb: 0 0 0;
+  --background-start-rgb: 214 219 220;
+  --background-end-rgb: 255 255 255;
 }
 
-/* 
-@media (prefers-color-scheme: dark) {
+@layer theme {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --text-color: 0 0 0;
+    --hover-color: 232 232 232;
+    --text-slow: 48 48 48;
+    --navbar-color: 255 255 255;
+    --bg-infocard-color: 240 240 240;
+    --background-end-rgb: 255 255 255;
+    --background-start-rgb: 214 219 220;
   }
-} */ 
+  .dark {
+    --text-color: 255 255 255;
+    --hover-color: 21 21 21;
+    --text-slow: 145 145 145;
+    --navbar-color: 18 18 18;
+    --bg-infocard-color: 13 13 13;
+    --background-end-rgb: 0 0 0;
+    --background-start-rgb: 64 62 62;
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-start-rgb))
-      )
-      rgb(var(--background-end-rgb))
+  /* aplico variables para despues agregarlas al className */
+  .layerblack {
+    background-color: rgb(var(--background-end-rgb));
+  }
+  .cardcolor {
+    background-color: rgb(var(--bg-infocard-color));
+  }
+  .text {
+    color: rgb(var(--text-color))!important;
+  }
+  .textslow {
+    color: rgb(var(--text-slow))!important;
+  }
+  .hover:hover {
+    background-color: rgb(var(--hover-color));
+    border-radius: 4px;
+  }
+  /* Falta aplicar */
+  .sidebar {
+    background-color: rgb(var(--navbar-color)); 
+  }
+  .navbar {
+    background-color: rgb(var(--navbar-color));
+    transition: background-color .3s;
+  }
 }
 
-.icono-cart{
-  color: black;
-  margin: 10px;
+@layer base {
+  body {
+    background: linear-gradient(
+    to top,
+    rgb(var(--background-start-rgb)) 20%,
+    rgb(var(--background-end-rgb)) 100%
+  );
+  }
 }
 
-.icono-close{
-  color: black;
-  width: "40px";
-  height:"40px" ;
-  cursor: pointer;
-}
-
-.icono-menu{
-  color: black;
+.title {
+  color: var(--text-color);
 }
 
 .translate{
@@ -62,35 +91,5 @@ body {
   border-radius: 4px;
   color: white;
 }
-
-/* @keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-} 
-
-@-webkit-keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-} */
-
-/* CLASE DE ESTILO PERSONALIZADA */
-/* .fade-in {
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-} */
-
-/* 
-.btn-primary {
-  @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
-}
-
-.btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
-} */
 
 

@@ -11,7 +11,7 @@ export default function WatchOrder() {
   const id = pathname.split('/').pop();
 
   if (!order || order.id !== id) {
-    return <p className="text-center py-10">Orden no encontrada</p>;
+    return <p className="text-center text py-10">Orden no encontrada</p>;
   }
 
   // console.log(order.items)
@@ -23,10 +23,10 @@ export default function WatchOrder() {
 
   return (
     <div className="flex justify-center items-start px-4 py-8 mb-20">
-      <div className="w-full max-w-4xl space-y-8 bg-white shadow-md rounded-md p-6">
+      <div className="w-full max-w-4xl space-y-8 layerblack shadow-md rounded-md p-6">
         <Title title={`Orden #${id}`} />
 
-        <div className="mb-6">
+        <div className="textslow mb-6">
           <p className="text-lg font-semibold">Cliente:</p>
           <p>{order.address.nombres} {order.address.apellidos}</p>
           <p>{order.address.direccion}{order.address.direccion2 ? `, ${order.address.direccion2}` : ''}</p>
@@ -44,12 +44,12 @@ export default function WatchOrder() {
           </p>
         </div>
 
-        <div className="bg-gray-100 rounded-lg p-6 space-y-6">
-          <p className="text-sm text-gray-500">Productos en la orden</p>
+        <div className="text layerblack rounded-lg p-6 space-y-6">
+          <p className="text-sm textslow">Productos en la orden</p>
           {order.items && order.items.map((ci) => (
             <div
               key={ci.slug || ci.id}
-              className="flex items-center bg-gray-50 rounded-lg p-4"
+              className="flex items-center cardcolor rounded-lg p-4"
             >
               {ci.images?.[0] && (
                 <Image
@@ -62,7 +62,7 @@ export default function WatchOrder() {
               )}
               <div className="flex-1">
                 <h3 className="font-semibold text-lg">{ci.title}</h3>
-                {ci.selectedSize && <p className="text-gray-500">Talla: {ci.selectedSize}</p>}
+                {ci.selectedSize && <p className="textslow">Talla: {ci.selectedSize}</p>}
               </div>
               <div className="flex flex-col items-center mr-4">
               </div>

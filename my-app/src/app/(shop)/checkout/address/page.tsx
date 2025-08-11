@@ -17,8 +17,8 @@ export default function AddressPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex justify-center px-4 py-8">
-      <div className="w-full max-w-4xl bg-white shadow rounded-lg p-6 space-y-6">
+    <form onSubmit={handleSubmit} className="flex text justify-center px-4 py-8">
+      <div className="w-full max-w-4xl layerblack shadow rounded-lg p-6 space-y-6">
         <Title title="Dirección" subtitle="Dirección de entrega" />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {[
@@ -38,7 +38,7 @@ export default function AddressPage() {
               <input
                 name={name}
                 type={type}
-                className="mt-1 p-2 border rounded-md bg-gray-100 focus:ring focus:ring-blue-200"
+                className="bg-gray-200 dark:bg-gray-800 mt-1 p-2 border rounded-md focus:ring focus:ring-blue-200"
               />
             </div>
           ))}
@@ -47,7 +47,7 @@ export default function AddressPage() {
             <span className="font-medium">País</span>
             <select
               name="pais"
-              className="mt-1 p-2 border rounded-md bg-gray-100 focus:ring focus:ring-blue-200"
+              className="mt-1 p-2 border rounded-md bg-gray-200 dark:bg-gray-800 focus:ring focus:ring-blue-200"
             >
               <option value="">[ Seleccione ]</option>
               <option value="UY">Uruguay</option>
@@ -62,7 +62,7 @@ export default function AddressPage() {
             <input
               name="telefono"
               type="tel"
-              className="mt-1 p-2 border rounded-md bg-gray-100 focus:ring focus:ring-blue-200"
+              className="mt-1 p-2 border rounded-md bg-gray-200 dark:bg-gray-800 focus:ring focus:ring-blue-200"
             />
           </div>
 

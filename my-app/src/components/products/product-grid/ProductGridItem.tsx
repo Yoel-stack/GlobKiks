@@ -32,14 +32,14 @@ export const ProductGridItem = ({ product }:Props ) => {
             onMouseEnter={ () => setDisplayImage(product.images[1])}
             onMouseLeave={ () => setDisplayImage(product.images[0])}
             />
-            <div className="p-2 flex">
-                <Link className="text-decoration-none text-black"
+            <div className="mt-2 flex">
+                <Link className="text hover p-1 text-decoration-none text-black"
                 href={`/product/${ product.slug }`}>
                 { product.title }
                 </Link>
             </div>
             <div>
-            <span className="p-2"> ${product.price}</span>
+            <span className="textslow"> ${product.price}</span>
             </div>
         </div>
     )

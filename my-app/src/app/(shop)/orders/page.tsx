@@ -9,7 +9,7 @@ export default function MyOrders() {
 
   const { order } = UseOrder();
 
-  if (!order) return <p className='text-center py-10'>No hay órdenes recientes</p>;
+  if (!order) return <p className='text text-center py-10'>No hay órdenes recientes</p>;
 
   //Convierte a array 
   const orders = [order];
@@ -17,15 +17,15 @@ export default function MyOrders() {
   return (
     <>
       <Title title="Mis ordenes" />
-      <div className="mb-10 overflow-x-auto">
+      <div className="rounded-sm mb-10 overflow-x-auto">
         <table className="min-w-full">
-          <thead className="bg-gray-200 border-b">
+          <thead className="layerblack border-b">
             <tr>
               {['#ID', 'Nombre completo', 'Estado', 'Opciones'].map((label) => (
                 <th
                   key={label}
                   scope="col"
-                  className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                  className="text-sm font-medium textslow px-6 py-4 text-left"
                 >
                   {label}
                 </th>
@@ -36,15 +36,15 @@ export default function MyOrders() {
             {orders.map((ord) => (
               <tr
                 key={ord.id}
-                className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
+                className="layerblack border-b transition duration-300 ease-in-out hover"
               >
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium textslow">
                   {ord.id}
                 </td>
-                <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <td className="text-sm textslow font-light px-6 py-4 whitespace-nowrap">
                   {ord.address.nombres} {ord.address.apellidos}
                 </td>
-                <td className="flex items-center text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <td className="flex items-center text-sm textslow font-light px-6 py-4 whitespace-nowrap">
                   <IoCardOutline
                     className={ord.paid ? 'text-green-800' : 'text-red-800'}
                   />
@@ -53,7 +53,7 @@ export default function MyOrders() {
                   </span>
                   <p className='mt-3'>| Total: ${ord.total.toFixed(2)}</p>
                 </td>
-                <td className="text-sm text-gray-900 font-light px-6 py-4">
+                <td className="text-sm textslow font-light px-6 py-4">
                   <Link href={`/orders/${ord.id}`} className="hover:underline">
                     Ver orden
                   </Link>

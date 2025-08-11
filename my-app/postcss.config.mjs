@@ -3,3 +3,11 @@ const config = {
 };
 
 export default config;
+
+// postcss.config.cjs
+module.exports = {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+};
+

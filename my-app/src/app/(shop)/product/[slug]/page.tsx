@@ -44,7 +44,7 @@ export default function slugPage ({ params }: Props){
     };
 
     return (
-        <div className="mt-3 mb-20 sm:grid md:grid-cols-3 gap-3">
+        <div className="text mt-3 mb-20 sm:grid md:grid-cols-3 gap-3">
             {/* Slug: {slug}; */}
 
             {/* PRODUCT IMG Mobile */}
