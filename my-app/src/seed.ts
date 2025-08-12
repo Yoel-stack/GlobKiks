@@ -13,7 +13,7 @@ interface SeedProduct {
 
 type ValidCatergories = 'mujeres'|'hombres'|'unisex';
 type ValidTypes = 'futbol'|'correr'|'casual';
-type ValidSizes = '41'|'42'|'43'|'44';
+type ValidSizes = '37'|'38'|'39'|'40'|'41'|'42'|'43'|'44'|'45';
 
 interface SeedData { 
     products: SeedProduct[],
@@ -28,9 +28,9 @@ export const initialData: SeedData = {
                 'modelo11.webp',
             ],
             inStock: 7,
-            price: 5500,
+            price: 4500,
             slug: "champion_casual1_caballero",
-            sizes: ['41','42','43','44'],
+            sizes: ['40','41','42','43','44'],
             type: 'casual',
             tags: ['menshoes'],
             title: "New Balen",
@@ -43,24 +43,24 @@ export const initialData: SeedData = {
                 'modelo22.webp',
             ],
             inStock: 4,
-            price: 5000,
+            price: 2500,
             slug: "championes_casual2_dama",
-            sizes: ['41','42','43','44'],
+            sizes: ['39','40','41','42','43'],
             type: 'casual',
             tags: ['womenshoes'],
             title: "Jack New",
             gender: "mujeres"
         },
         {
-            description: "Tenis ideales para usar todos los dias ",
+            description: "Tenis ideales para usar todos los dias color blanco con tonalidades en azul y rojo ademas cuenta con una suela beige resistente",
             images: [
                 'modelo3.webp',
                 'modelo33.webp',
             ],
             inStock: 8,
-            price: 6800,
+            price: 3000,
             slug: "championes_casual3_unisex",
-            sizes: ['41','42','43','44'],
+            sizes: ['37','38','39','40','41','42'],
             type: 'casual',
             tags: ['unisexshoes'],
             title: "RABBIT School",
@@ -73,7 +73,7 @@ export const initialData: SeedData = {
                 'modelo44.webp',
             ],
             inStock: 8,
-            price: 6500,
+            price: 5700,
             slug: "championes_correr4_caballero",
             sizes: ['41','42','43','44'],
             type: 'correr',
@@ -88,7 +88,7 @@ export const initialData: SeedData = {
                 'modelo55.webp',
             ],
             inStock: 8,
-            price: 4000,
+            price: 5000,
             slug: "championes_correr5_caballero",
             sizes: ['41','42','43','44'],
             type: 'correr',
@@ -97,13 +97,13 @@ export const initialData: SeedData = {
             gender: "hombres"
         },
         {
-            description: "Tenis para entrenar suela HightPerformance",
+            description: "Tenis para entrenar suela HightPerformance, muy comodos",
             images: [
                 'modelo7.webp',
                 'modelo77.webp',
             ],
             inStock: 8,
-            price: 6800,
+            price: 6200,
             slug: "championes_correr7_caballero",
             sizes: ['41','42','43','44'],
             type: 'futbol',
@@ -120,14 +120,14 @@ export const initialData: SeedData = {
             inStock: 8,
             price: 6000,
             slug: "championes_futbol8_caballero",
-            sizes: ['41','42','43','44'],
+            sizes: ['40','41','42','43','44'],
             type: 'futbol',
             tags: ['menshoes'],
             title: "Naike Hipervenom",
             gender: "hombres"
         },
         {
-            description: "Tenis muy comodos, si buscas durabilidad este es tu modelo ideal",
+            description: "Tenis muy comodos, si buscas durabilidad y estilo este es el modelo ideal",
             images: [
                 'modelo9.webp',
                 'modelo99.webp',
@@ -135,22 +135,22 @@ export const initialData: SeedData = {
             inStock: 4,
             price: 6200,
             slug: "championes_de_mujer9",
-            sizes: ['41','42','43','44'],
+            sizes: ['39','40','41','42','43'],
             type: 'casual',
             tags: ['womenshoes'],
             title: "FashionSix",
             gender: "mujeres"
         },
         {
-            description: "Tenis Chunta SV muy ligeros, ganaras en todo te lo aseguro",
+            description: "Tenis Chunta SV muy ligeros, ideales para correr o entrenar",
             images: [
                 'modelo10.webp',
                 'modelo100.webp',
             ],
             inStock: 4,
-            price: 6200,
+            price: 6800,
             slug: "championes_unisex10",
-            sizes: ['41','42','43','44'],
+            sizes: ['39','40','41','42','43','44','45'],
             type: 'correr',
             tags: ['unisexshoes'],
             title: "Chunta SV",

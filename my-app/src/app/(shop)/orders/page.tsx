@@ -25,7 +25,7 @@ export default function MyOrders() {
                 <th
                   key={label}
                   scope="col"
-                  className="text-sm font-medium textslow px-6 py-4 text-left"
+                  className="text-sm font-medium cardcolor textslow px-6 py-4 text-left"
                 >
                   {label}
                 </th>

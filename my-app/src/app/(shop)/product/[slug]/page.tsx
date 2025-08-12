@@ -9,19 +9,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { ValidSizes } from "@/interfaces";
 
-
-interface Props {
-    params: {
-        slug: string; //slug porque le pasa el slug del producto
-    }   
-}
-
-export default function slugPage ({ params }: Props){
+export default function slugPage (){
     const { slug } = useParams<{ slug: string }>();
 
     const { addToCart } = useCart();
 
-    const product = initialData.products.find( p => p.slug === params.slug)!; //find devuelve el primer elemento del array proporcionado que cumple con la función de prueba!
+    const product = initialData.products.find( p => p.slug === slug)!; //find devuelve el primer elemento del array proporcionado que cumple con la función de prueba!
     //if
     const [qty, setQty] = useState(1)
     const [size, setSize] = useState(product.sizes[0]);

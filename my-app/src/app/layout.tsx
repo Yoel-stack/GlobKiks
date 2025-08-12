@@ -6,7 +6,7 @@ import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const metadata: Metadata = {
-  title: "Shoes Shop",
+  title: "GlobKiks",
   description: "Una tienda virtual de championes",
 };
 
@@ -16,18 +16,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <OrderProvider>
-      <ClerkProvider>
-        <NextThemeProvider>
-        <html lang="es">
-          <body className={`${titleFont.className} antialiased`}>
-            <AddressProvider>
-              <CartProvider>{children}</CartProvider>
-            </AddressProvider>
-          </body>
-        </html>
-        </NextThemeProvider>
-      </ClerkProvider>
-    </OrderProvider>
+    // suppressHidrationWarning - hay una diferencia entre el HTML generado por el servidor y el que se renderiza en el cliente y esto elimina el error
+    <html lang="es" suppressHydrationWarning>
+      <body className={`${titleFont.className} antialiased`}>
+        <OrderProvider>
+          <ClerkProvider>
+            <NextThemeProvider>
+              <AddressProvider>
+                <CartProvider>{children}</CartProvider>
+              </AddressProvider>
+            </NextThemeProvider>
+          </ClerkProvider>
+        </OrderProvider>
+      </body>
+    </html>
   );
 }

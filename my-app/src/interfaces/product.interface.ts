@@ -13,4 +13,4 @@ export interface Product {
 
 export type ValidCatergories = 'mujeres'|'hombres'|'unisex';
 export type ValidTypes = 'futbol'|'correr'|'casual';
-export type ValidSizes = '41'|'42'|'43'|'44'; 
+export type ValidSizes = '37'|'38'|'39'|'40'|'41'|'42'|'43'|'44'|'45'; 

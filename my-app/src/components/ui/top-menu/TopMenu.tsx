@@ -25,7 +25,7 @@ export const TopMenu = () => {
         <div className="container mx-auto flex items-center justify-between py-4">
           
           <Link href="/" className="text text-xl text-decoration-none">
-            ShoesYm
+            GlobKiks
           </Link>
 
           {/* Menú principal oculto solo en XS, visible en SM o mayor */}
