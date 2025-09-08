@@ -15,7 +15,7 @@ export default function CheckoutPage() {
   
   const placeOrder = () => {
     const id = Math.random().toString(36).substr(2, 9);
-    setOrder({ id, items: cart, address, total, subTotal, taxes, paid: true });
+    setOrder({ id, items: cart, address, total, subTotal, taxes, paid: false });
     router.push(`/orders/${id}`);
   };      
   

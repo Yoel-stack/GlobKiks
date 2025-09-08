@@ -4,11 +4,13 @@ import { UseOrder, Title } from "@/components";
 import { usePathname } from "next/navigation";
 import { IoCardOutline } from "react-icons/io5";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function WatchOrder() {
   const { order } = UseOrder();
   const pathname = usePathname();
   const id = pathname.split('/').pop();
+  const [loading, setLoading] = useState(false);
 
   if (!order || order.id !== id) {
     return <p className="text-center text py-10">Orden no encontrada</p>;
@@ -20,6 +22,33 @@ export default function WatchOrder() {
   const taxRate = 0.05;
   const taxes = subTotal * taxRate;
   const total = subTotal + taxes;
+
+  const handlePay = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/mercadopago", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order), // Enviamos toda la orden
+      });
+
+      const data = await res.json();
+
+      if (data.preferenceId) {
+        // Redirige al checkout de Mercado Pago
+        window.location.href = `https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=${data.preferenceId}`;
+      } else {
+        alert("Error creando la preferencia de pago");
+      }
+    } catch (error) {
+      console.error("Error al iniciar el pago:", error);
+      alert("Ocurrió un error al iniciar el pago");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="flex justify-center items-start px-4 py-8 mb-20">
@@ -43,6 +72,21 @@ export default function WatchOrder() {
             {order.paid ? 'Pagada' : 'No pagada'}
           </p>
         </div>
+
+
+
+
+          {!order.paid && (
+          <button
+            onClick={handlePay}
+            disabled={loading}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded"
+          >
+            {loading ? "Redirigiendo a Mercado Pago..." : "Pagar con Mercado Pago"}
+          </button>
+        )}
+
+
 
         <div className="text layerblack rounded-lg p-6 space-y-6">
           <p className="text-sm textslow">Productos en la orden</p>

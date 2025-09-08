@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     // suppressHidrationWarning - hay una diferencia entre el HTML generado por el servidor y el que se renderiza en el cliente y esto elimina el error
-    <html lang="es" suppressHydrationWarning>
+    <html lang="ES" suppressHydrationWarning>
       <body className={`${titleFont.className} antialiased`}>
         <OrderProvider>
           <ClerkProvider>

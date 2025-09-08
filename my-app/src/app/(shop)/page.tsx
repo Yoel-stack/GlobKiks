@@ -1,4 +1,3 @@
-// import { geistSans, titleFont } from "@/config/fonts";
 import { ProductGrid, Title } from "@/components";
 import { initialData } from "@/seed";
 

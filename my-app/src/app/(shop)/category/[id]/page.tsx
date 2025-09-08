@@ -5,13 +5,12 @@ import { initialData } from "@/seed";
 const categoryProducts = initialData.products;
 
 interface Props {
-  params: {
-    id: ValidCatergories; //id porque le pasa la id del producto... validCategories
-  }  
+  params: Promise<{id: ValidCatergories //id porque le pasa la id del producto... validCategories
+  }>;
 }
 
-export default function categoryPage({ params }: Props) {
-  const { id } = params;
+export default async function categoryPage({ params }: Props) {
+  const { id } = await params;
   const products = categoryProducts.filter((product) => product.gender === id);
 
   const idS = {
