@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState } from "react";
-import type { Product } from "@/seed";
+import type { Product } from "@/interfaces/product.interface";
 
 
 interface CartItem extends Product {

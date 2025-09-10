@@ -1,10 +1,11 @@
 'use client';
 
-import { UseOrder, Title } from "@/components";
+import { Title } from "@/components";
+import { UseOrder } from "@/components/orderContext/OrderContext";
 import { usePathname } from "next/navigation";
 import { IoCardOutline } from "react-icons/io5";
-import Image from "next/image";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function WatchOrder() {
   const { order } = UseOrder();
@@ -14,14 +15,14 @@ export default function WatchOrder() {
 
   if (!order || order.id !== id) {
     return <p className="text-center text py-10">Orden no encontrada</p>;
-  }
+  } 
 
-  // console.log(order.items)
   const totalItems = order.items?.reduce((sum, i) => sum + i.quantity, 0) ?? 0;
   const subTotal = order.items?.reduce((sum, i) => sum + i.price * i.quantity, 0) ?? 0;
   const taxRate = 0.05;
   const taxes = subTotal * taxRate;
   const total = subTotal + taxes;
+
 
   const handlePay = async () => {
     setLoading(true);
@@ -73,9 +74,6 @@ export default function WatchOrder() {
           </p>
         </div>
 
-
-
-
           {!order.paid && (
           <button
             onClick={handlePay}
@@ -92,7 +90,7 @@ export default function WatchOrder() {
           <p className="text-sm textslow">Productos en la orden</p>
           {order.items && order.items.map((ci) => (
             <div
-              key={ci.slug || ci.id}
+              key={ci.slug}
               className="flex items-center cardcolor rounded-lg p-4"
             >
               {ci.images?.[0] && (
@@ -120,7 +118,7 @@ export default function WatchOrder() {
             <p className="font-semibold">Total productos: {totalItems}</p>
             <p className="font-semibold">Subtotal: ${order.subTotal.toFixed(2)}</p>
             <p className="font-semibold">Impuestos 5%: ${order.taxes.toFixed(2)}</p>
-            <p className="mt-2 text-xl font-semibold">Total: ${order.total.toFixed(2)}</p>
+            <p className="mt-2 text-xl font-semibold">Total: ${total.toFixed(2)}</p>
           </div>
         </div>
       </div>

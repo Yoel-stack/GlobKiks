@@ -1,7 +1,9 @@
 'use client';
 
 import { useAddress, QuantitySelector, Title } from "@/components";
-import { useCart, UseOrder } from "@/components";
+import { UseOrder } from "@/components/orderContext/OrderContext";
+import { useCart } from "@/components/context/CartContext";
+
 import { useRouter } from "next/navigation"; //Si tu proyecto está en el directorio app, debes importar de next/navigation, no de next/router
 import Link from "next/link";
 import Image from "next/image";
