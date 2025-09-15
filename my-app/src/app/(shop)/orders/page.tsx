@@ -1,5 +1,4 @@
 'use client'
-// https://tailwindcomponents.com/component/hoverable-table
 
 import { Title, UseOrder } from '@/components';
 import Link from 'next/link';

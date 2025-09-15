@@ -3,18 +3,20 @@
 import { useCart, QuantitySelector, SlideShow, SizeSelect, SlideShowMobile} from "@/components";
 import { titleFont } from "@/config/fonts";
 import { initialData } from "@/seed";
+import { toast } from 'react-toastify';
 
 //importar hook
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { ValidSizes } from "@/interfaces";
 
-export default function slugPage (){
+export default function SlugPage (){
     const { slug } = useParams<{ slug: string }>();
 
     const { addToCart } = useCart();
-
+    
     const product = initialData.products.find( p => p.slug === slug)!; //find devuelve el primer elemento del array proporcionado que cumple con la función de prueba!
+    
     //if
     const [qty, setQty] = useState(1)
     const [size, setSize] = useState(product.sizes[0]);
@@ -26,9 +28,9 @@ export default function slugPage (){
     }
     }, [slug]);
 
-    const hendleAdd = () => {
+    const hendleAdd = () => { 
         addToCart({ ...product, quantity: qty, selectedSize: size});
-        alert('Articulo agregado');
+        toast.success('Artículo agregado al carrito');
     };
 
     const handleSizeChange = (newSize: ValidSizes) => {
@@ -36,21 +38,21 @@ export default function slugPage (){
     localStorage.setItem(`selectedSize-${slug}`, newSize);
     };
 
+
     return (
         <div className="text mt-3 mb-20 sm:grid md:grid-cols-3 gap-3">
-            {/* Slug: {slug}; */}
 
             {/* PRODUCT IMG Mobile */}
             <div className="col-span-1 p-2 md:col-span-2">
                 <SlideShowMobile
-                title={product?.title}
-                images={product?.images}
+                title={product.title}
+                images={product.images}
                 className="block md:hidden"/>            
 
             {/* PRODUCT IMG  */}
                 <SlideShow 
-                title={product?.title}
-                images={product?.images}
+                title={product.title}
+                images={product.images}
                 className="hidden md:block"/>
             </div>
 

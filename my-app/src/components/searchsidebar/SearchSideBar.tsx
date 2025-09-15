@@ -1,9 +1,11 @@
-"use client";
+'use client';
+
 import React, { useState, useRef, useMemo, useEffect } from "react";
 import Fuse from "fuse.js";
-import debounce from "lodash.debounce";
+import debounce from 'lodash.debounce'; //Eso significa que si escribes "naike", se hacen 6 búsquedas en menos de 1 segundo. Eso gasta recursos innecesariamente y puede provocar saltos, lags o bugs visuales.
 import Link from "next/link";
-import { initialData, Product } from "@/seed";
+import { initialData } from "@/seed";
+import { Product } from "@/interfaces";
 
 interface SearchAutocompleteProps {
   onCloseMenu?: () => void;
@@ -26,19 +28,15 @@ export default function SearchSideBar({ onCloseMenu }: SearchAutocompleteProps) 
   const [showDropdown, setShowDropdown] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const performSearch = (val: string) => {
-    if (!val) {
+  const debounced = useMemo (
+    () => { return debounce((val: string) => { if (!val) {
       setResults(products.slice(0, 0));
     } else {
-      const found = fuse.search(val, { limit: 4 }).map(r => r.item);
+      const found = fuse.search(val, { limit:4}).map(r => r.item);
       setResults(found);
     }
-  };
-
-  const debounced = useMemo(
-    () => debounce((val: string) => performSearch(val), 250),
-    [fuse]
-  );
+  }, 250);
+}, [fuse, products]);
 
   useEffect(() => {
     return () => {
@@ -54,7 +52,7 @@ export default function SearchSideBar({ onCloseMenu }: SearchAutocompleteProps) 
 
   const handleFocus = () => {
     setShowDropdown(true);
-    performSearch("");
+    debounced("");
   };
 
   const handleBlur = () => {

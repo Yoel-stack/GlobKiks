@@ -13,7 +13,7 @@ import './slideshow.css';
 
 interface Props {
     images: string[];
-    title: string[];
+    title: string;
     className?: string; // ? Esto significa que la propiedad puede tener el tipo especificado o puede estar ausente (es decir, undefined)
 }
 

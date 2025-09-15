@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { titleFont } from "@/config/fonts";
 import { ClerkProvider } from '@clerk/nextjs';
 import { AddressProvider, CartProvider, NextThemeProvider, OrderProvider } from "@/components";
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -23,6 +26,7 @@ export default function RootLayout({
           <ClerkProvider>
             <NextThemeProvider>
               <AddressProvider>
+                <ToastContainer position="top-right" autoClose={3000} />
                 <CartProvider>{children}</CartProvider>
               </AddressProvider>
             </NextThemeProvider>
@@ -32,3 +36,14 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+// import { ColorModeScript } from '@chakra-ui/react';
+
+// // ...
+// <body>
+//   <ColorModeScript initialColorMode="light" />
+//   <ChakraProvider>
+//     {/* ... */}
+//   </ChakraProvider>
+// </body>
