@@ -20,33 +20,30 @@ interface Props {
 export const SlideShowMobile = ({ images, title, className}: Props) => {
 
     return (
-        <div className= { className }>
+      <div className={className}>
         <Swiper
-        style={{
-            width: '100vw',
-            height: '500px',
-        }}
-        pagination
-        autoplay={{delay: 2500}} //pasa la imagen automaticamente dps de los 2,5 segundos
-        modules={[FreeMode, Autoplay, Pagination]} // se importan los modulos personalizados de Swiper
-        className="mySwiper2"
+          style={{
+            width: "85vw",
+            height: "350px",
+          }}
+          pagination
+          autoplay={{ delay: 2500 }} //pasa la imagen automaticamente dps de los 2,5 segundos
+          modules={[FreeMode, Autoplay, Pagination]} // se importan los modulos personalizados de Swiper
+          className="mySwiper2"
         >
-            {
-                images.map ( images => (
-                    <SwiperSlide key={ images }>
-                        <Image
-                        width={ 500 }
-                        height={ 500 }
-                        src={`/products/${ images }`}
-                        alt={ title } //!!
-                        className="objet-fill"
-                        />
-                    </SwiperSlide>
-                    
-                ))
-            }
+          {images.map((images) => (
+            <SwiperSlide key={images}>
+              <Image
+                width={200}
+                height={300}
+                src={`/products/${images}`}
+                alt={title} //!!
+                className="rounded-lg objet-fill"
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
-        </div>
-    )
-}
+      </div>
+    );
+};
 

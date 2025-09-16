@@ -45,53 +45,65 @@ export default function CheckoutPage() {
             Editar Carrito
           </Link>
         </div>
-        
-        {/* 🛒 Sección de carrito en columna */}
+
+        {/* Sección de carrito en columna */}
+
         <div className="layerblack shadow rounded-lg p-6 space-y-6">
           <p className="text-sm my-2 textslow">Tus productos</p>
+
+          {/* Listado de productos */}
           {cart.map((ci) => (
             <div
               key={ci.slug}
-              className="flex items-center cardcolor rounded-lg p-4"
+              className="flex flex-col sm:flex-row cardcolor shadow rounded-lg p-4 gap-4"
             >
+              {/* Imagen */}
               <Image
                 src={`/products/${ci.images[0]}`}
                 width={100}
                 height={100}
                 alt={ci.title}
-                className="rounded mr-4 flex-shrink-0"
+                className="rounded flex-shrink-0"
               />
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg">{ci.title}</h3>
-                <p className="textslow">Talla: {ci.selectedSize}</p>
-              </div>
-              <div className="flex flex-col items-center mr-4">
-                <QuantitySelector
-                  quantity={ci.quantity}
-                  onChange={(q) => updateQuantity(ci.slug, q)}
-                />
-                <button
-                  onClick={() => removeFromCart(ci.slug)}
-                  className="mt-2 text-red-600 hover:text-red-800"
-                >
-                  Remover
-                </button>
-              </div>
-              <div className="text-right">
-                <p className="font-medium">
-                  ${(ci.price * ci.quantity).toFixed(2)}
-                </p>
+
+              {/* Contenido principal */}
+              <div className="flex flex-col sm:flex-row justify-between w-full gap-4">
+                {/* Info del producto */}
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg break-words">
+                    {ci.title}
+                  </h3>
+                  <p className="textslow">Talla: {ci.selectedSize}</p>
+                </div>
+
+                {/* Quantity, Remover, Subtotal */}
+                <div className="flex flex-col items-center sm:items-end text-center sm:text-right min-w-[120px]">
+                  <QuantitySelector
+                    quantity={ci.quantity}
+                    onChange={(q) => updateQuantity(ci.slug, q)}
+                  />
+                  <button
+                    onClick={() => removeFromCart(ci.slug)}
+                    className="mt-2 text-red-600 hover:text-red-800"
+                  >
+                    Remover
+                  </button>
+
+                  <p className="mt-2 font-medium">
+                    ${(ci.price * ci.quantity).toFixed(2)}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
 
+          {/* Totales */}
           <div className="pt-4 border-t border-gray-200 text-right">
             <p className="font-semibold">Total productos: {totalItems}</p>
             <p className="font-semibold">Total: ${total.toFixed(2)}</p>
           </div>
         </div>
-
-        {/* 📦 Resumen de Orden */}
+        {/* Resumen de Orden */}
         <div className="layerblack shadow rounded-lg p-6 space-y-4">
           <h2 className="text-2xl font-bold">Dirección de entrega</h2>
           <div className="mb-4">
@@ -137,9 +149,7 @@ export default function CheckoutPage() {
             href="/checkout/address"
             className="mt-2 block bg-blue-600 text-decoration-none hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded text-center"
           >
-            <button onClick={placeOrder}>
-            Colocar orden
-            </button>
+            <button onClick={placeOrder}>Colocar orden</button>
           </Link>
         </div>
       </div>

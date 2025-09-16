@@ -5,8 +5,7 @@ import {IoCloseOutline, IoFootstepsOutline, IoLogInOutline, IoPersonOutline, IoP
 import Link from "next/link";
 import clsx from "clsx";
 import { useUIStore } from "@/store";
-import { ClerkProvider } from "@clerk/nextjs";
-import { SignUpButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignUpButton, ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import SearchSideBar from "@/components/searchsidebar/SearchSideBar";
 import ThemeToggle from "@/components/theme/ThemeToggler";
 
@@ -14,8 +13,8 @@ import ThemeToggle from "@/components/theme/ThemeToggler";
 
 export const Sidebar = () =>  {
 
-  const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);//menuLateral
-  const [openCategories, setOpenCategories] = useState(false);//menu de categorias
+  const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);  //Menu lateral
+  const [openCategories, setOpenCategories] = useState(false);  //Menu de categorias
 
   const closeMenu = useUIStore((state) => state.closeSideMenu);
 
@@ -24,6 +23,8 @@ export const Sidebar = () =>  {
     { label: "Hombres", href: "/category/hombres" },
     { label: "Unisex", href: "/category/unisex" },
   ];
+
+
   return (
     <ClerkProvider>
       <div>
@@ -57,9 +58,7 @@ export const Sidebar = () =>  {
           </div>
           {/* Input */}
           <div>
-            <SearchSideBar
-              onCloseMenu={closeMenu}
-            />
+            <SearchSideBar onCloseMenu={closeMenu} />
           </div>
           {/* Menu */}
           <nav
@@ -70,12 +69,14 @@ export const Sidebar = () =>  {
             <SignedOut>
               <IoLogInOutline size={20} />
               <span className="text ml-3 text-xl">
-                <SignUpButton></SignUpButton>
+                <SignUpButton mode="modal">Ingresar</SignUpButton>
               </span>
             </SignedOut>
             <SignedIn>
               <IoPersonOutline size={20} className="text" />
-              <span className=" text mx-2.5 cursor-pointer ml-3 text-xl">Perfil</span>
+              <span className=" text mx-2.5 cursor-pointer ml-3 text-xl">
+                Perfil
+              </span>
               <UserButton />
             </SignedIn>
           </nav>
@@ -88,7 +89,7 @@ export const Sidebar = () =>  {
           </Link>
           {/* Menu */}
           <div className="w-full mt-4 h-px bg-gray-500"></div>
-          {/* REVISAR PARA QUE FUNCIONA */}
+
           <Link
             href="/"
             className="flex items-center mt-4 p-1 hover text text-decoration-none rounded transition-all"
@@ -102,7 +103,9 @@ export const Sidebar = () =>  {
               className="flex w-full items-center mt-4 p-1 hover text text-decoration-none rounded transition-all"
             >
               <IoFootstepsOutline size={20} />
-              <span className="w-7 h-7 cursor-pointer ml-3 text-xl">Categorias</span>
+              <span className="w-7 h-7 cursor-pointer ml-3 text-xl">
+                Categorias
+              </span>
             </nav>
             <nav className="">
               {openCategories && (

@@ -85,7 +85,7 @@ export default function SlugPage (){
                 <h3 className="my-2 mt-3 text-sm ">
                     Descripcion
                 </h3>
-                <p className="font-lihgt">{ product?.description }</p>
+                <p className="font-lihgt mx-1">{ product?.description }</p>
 
             </div>
             

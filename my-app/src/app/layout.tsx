@@ -3,6 +3,7 @@ import { titleFont } from "@/config/fonts";
 import { ClerkProvider } from '@clerk/nextjs';
 import { AddressProvider, CartProvider, NextThemeProvider, OrderProvider } from "@/components";
 import { ToastContainer } from 'react-toastify';
+import { esES } from '@clerk/localizations'
 
 import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
@@ -23,7 +24,7 @@ export default function RootLayout({
     <html lang="ES" suppressHydrationWarning>
       <body className={`${titleFont.className} antialiased`}>
         <OrderProvider>
-          <ClerkProvider>
+          <ClerkProvider localization={esES}>
             <NextThemeProvider>
               <AddressProvider>
                 <ToastContainer position="top-right" autoClose={3000} />
@@ -35,15 +36,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
-
-
-// import { ColorModeScript } from '@chakra-ui/react';
-
-// // ...
-// <body>
-//   <ColorModeScript initialColorMode="light" />
-//   <ChakraProvider>
-//     {/* ... */}
-//   </ChakraProvider>
-// </body>
+};

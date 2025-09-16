@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/localizations": "^3.25.1",
     "@clerk/nextjs": "^6.24.0",
     "@stripe/stripe-js": "^7.7.0",
     "@tailwindcss/vite": "^4.1.7",
