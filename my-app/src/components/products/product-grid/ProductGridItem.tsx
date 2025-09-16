@@ -23,15 +23,17 @@ export const ProductGridItem = ({ product }:Props ) => {
         /* Propiedad de bootstrap, padding de 4 a todos los lados y bordes redondeados a las imagenes */
 
         <div className="place-items-center ml-3 p-2 rounded-md">
+            <Link className="flex" href={`/product/${ product.slug }`}>
             <Image
             src={`/products/${ displayImage }`}
             alt={ product.title }
             className="rounded"
             width={300}
-            height={300}
+            height={300} 
             onMouseEnter={ () => setDisplayImage(product.images[1])}
             onMouseLeave={ () => setDisplayImage(product.images[0])}
             />
+            </Link>
             <div className="mt-2 flex">
                 <Link className="text hover p-1 text-decoration-none text-black"
                 href={`/product/${ product.slug }`}>

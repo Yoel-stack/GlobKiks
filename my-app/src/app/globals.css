@@ -7,7 +7,7 @@
 /* Activar las clases dark: “se activa con `.dark` */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
+@theme { 
   --navbar-color: 51 56 71;
   --primary-channel: 39 68 148;
   --foreground-rgb: 0 0 0;
