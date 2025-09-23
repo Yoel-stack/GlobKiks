@@ -11,12 +11,11 @@ import Image from "next/image";
 export default function CheckoutPage() {
   
   const router = useRouter();
-  const { setOrder } = UseOrder();
-  // const { cart } = useCart();
+  const { addOrder} = UseOrder();
   
   const placeOrder = () => {
     const id = Math.random().toString(36).substr(2, 9);
-    setOrder({ id, items: cart, address, total, subTotal, taxes, paid: false });
+    addOrder({ id, items: cart, address, total, subTotal, taxes, paid: false });
     router.push(`/orders/${id}`);
   };      
   
@@ -46,8 +45,9 @@ export default function CheckoutPage() {
           </Link>
         </div>
 
-        {/* Sección de carrito en columna */}
 
+        {/* Sección de carrito en columna */}
+        
         <div className="layerblack shadow rounded-lg p-6 space-y-6">
           <p className="text-sm my-2 textslow">Tus productos</p>
 

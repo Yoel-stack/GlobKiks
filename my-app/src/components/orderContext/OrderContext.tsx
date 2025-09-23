@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import { CartItem } from "@/interfaces/product.interface";
 import { Address } from "@/interfaces/product.interface";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState, useEffect} from "react";
 
-// 🟢 1. Define la interfaz del contexto
+
 interface Order {
   id: string;
   items: CartItem[];
@@ -16,51 +16,67 @@ interface Order {
 }
 
 interface OrderContextType {
-  order: Order | null;
-  setOrder: (order: Order) => void;
+  orders: Order[];
+  addOrder: (order: Order) => void;
+  markOrderAsPaid: (orderId: string) => void;
+  deleteOrder: (orderId: string) => void;
 }
 
-// 🟢 2. Crea el contexto con tipo explícito
+
 const OrderContext = createContext<OrderContextType | undefined>(undefined);
 
-// 🟢 3. Define el proveedor
+
 export function OrderProvider({ children }: { children: ReactNode }) {
-  const [order, setOrder] = useState<Order | null>(null);
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  // Guardar orden en localstorage
+  const addOrder = (newOrder: Order) => {
+    const updatedOrders = [...orders, newOrder];
+    setOrders(updatedOrders);
+    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+  };
+
+  // Eliminar orden en localstorage
+  const deleteOrder = (orderId: string) => {
+  const updatedOrders = orders.filter(order => order.id !== orderId);
+  setOrders(updatedOrders);
+  localStorage.setItem('orders', JSON.stringify(updatedOrders));
+};
+
+
+  // Marcar orden como pagada
+  const markOrderAsPaid = (orderId: string) => {
+    const updatedOrders = orders.map((o) =>
+      o.id === orderId ? { ...o, paid: true } : o
+    );
+    setOrders(updatedOrders);
+    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+  };
+
+  // Al cargar la app leer localstorage
+  useEffect(() => {
+    const storedOrder = localStorage.getItem("orders");
+    if (storedOrder) {
+      try {
+        setOrders(JSON.parse(storedOrder));
+      } catch (err) {
+        console.error("Error al leer la orden desde localStorage:", err);
+      }
+    }
+  }, []);
 
   return (
-    <OrderContext.Provider value={{ order, setOrder }}>
+    <OrderContext.Provider value={{ orders, addOrder, deleteOrder, markOrderAsPaid }}>
       {children}
     </OrderContext.Provider>
   );
 }
 
-// 🟢 4. Hook personalizado con verificación
+
 export function UseOrder(): OrderContextType {
   const context = useContext(OrderContext);
   if (context === undefined) {
     throw new Error("useOrder must be used within an OrderProvider");
   }
   return context;
-}
-
-
-// 'use client';
-
-// import { createContext, ReactNode, useContext, useState } from "react";
-
-
-// //Con esto definimos un contexto simple que contiene el estado order y la función setOrder
-// const OrderContext = createContext();
-
-// export function OrderProvider({ children }: { children: ReactNode }) {
-//   const [order, setOrder] = useState(null);
-//   return (
-//     <OrderContext.Provider value={{ order, setOrder }}>
-//       {children}
-//     </OrderContext.Provider>
-//   );
-// };
-
-// export function useOrder() {
-//   return useContext(OrderContext);
-// };
+};

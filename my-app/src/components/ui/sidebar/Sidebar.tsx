@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import {IoCloseOutline, IoFootstepsOutline, IoLogInOutline, IoPersonOutline, IoPricetagOutline, IoShirtOutline, IoTicketOutline} from "react-icons/io5";
@@ -45,7 +45,7 @@ export const Sidebar = () =>  {
           className={clsx(
             "fixed p-5 rounded-sm right-0 top-0 w-[250px] sm:w-[300px] h-screen layerblack z-10 shadow-2xl transform transition-all duration-300",
             {
-              translate: !isSideMenuOpen, // translate es una clase personalizada de CSS
+              translate: !isSideMenuOpen, // Translate es una clase personalizada de CSS
             }
           )}
         >

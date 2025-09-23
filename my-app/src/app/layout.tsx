@@ -24,10 +24,11 @@ export default function RootLayout({
     <html lang="ES" suppressHydrationWarning>
       <body className={`${titleFont.className} antialiased`}>
         <OrderProvider>
-          <ClerkProvider localization={esES}>
+          <ClerkProvider 
+          localization={esES}>
             <NextThemeProvider>
               <AddressProvider>
-                <ToastContainer position="top-right" autoClose={3000} />
+                <ToastContainer position="top-right" autoClose={500} />
                 <CartProvider>{children}</CartProvider>
               </AddressProvider>
             </NextThemeProvider>
