@@ -3,13 +3,16 @@ export interface Product {
     images: string[];
     inStock: number;
     price: number;
+    priceOferta: number,
+    priceOriginal?: number,
+    mesOferta: number,
     slug: string;
     tags: string[];
     title: string;
     sizes: ValidSizes[];
     type: ValidTypes;
     gender: ValidCatergories;
-}
+};
 
 export type ValidCatergories = 'mujeres'|'hombres'|'unisex';
 export type ValidTypes = 'futbol'|'correr'|'casual';
@@ -21,9 +24,11 @@ export interface CartItem {
     title: string;
     quantity: number;
     price: number;
+    priceOferta: number;
+    priceOriginal?: number;
     selectedSize: string;
     images: string[];
-}
+};
 
 export interface Address {
     nombres?: string;

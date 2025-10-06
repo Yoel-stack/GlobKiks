@@ -9,8 +9,8 @@ export default function MyOrders() {
 
   if (!orders || orders.length === 0) {
     return (
-      <p className="text-center text py-10">No hay órdenes registradas.</p>
-    );
+      <p className="text-center text py-10">No hay órdenes registradas</p>
+    );  
   }
 
   return (

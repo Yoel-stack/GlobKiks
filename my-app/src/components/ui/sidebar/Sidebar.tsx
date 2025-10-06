@@ -125,7 +125,7 @@ export const Sidebar = () =>  {
             </nav>
           </div>
           <Link
-            href="/"
+            href="/ofertas"
             className="flex items-center mt-4 p-1 text hover text-decoration-none rounded transition-all"
           >
             <IoPricetagOutline size={20} />

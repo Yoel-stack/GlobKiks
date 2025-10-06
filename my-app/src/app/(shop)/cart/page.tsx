@@ -8,11 +8,19 @@ import Image from "next/image";
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
 
+  console.log('Contenido del carrito:', cart);
+
   const totalItems = cart.reduce((sum, i) => sum + i.quantity, 0);
   const subTotal = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
   const taxRate = 0.05;
   const taxes = subTotal * taxRate;
   const total = subTotal + taxes;
+
+  if ( totalItems === 0){
+    return (
+      <p className="text-center text py-10">No hay productos en el carrito</p>
+    )
+  }
   
   // redirect('/empty'); //te lleva denuevo al carrito de compras vacio, redirecciona 
   
@@ -53,24 +61,38 @@ export default function CartPage() {
               </div>
 
               {/* Acciones: cantidad, remover, subtotal */}
-              <div className="flex flex-col items-center sm:items-end text-center sm:text-right min-w-[120px]">
-                <QuantitySelector
-                  quantity={ci.quantity}
-                  onChange={q => updateQuantity(ci.slug, q)}
-                />
+             <div className="flex flex-col items-center sm:items-end text-center sm:text-right min-w-[120px]">
+  <QuantitySelector
+    quantity={ci.quantity}
+    onChange={q => updateQuantity(ci.slug, q)}
+  />
 
-                <button
-                  onClick={() => removeFromCart(ci.slug)}
-                  className="mt-2 text-red-600 hover:text-red-800"
-                >
-                  Remover
-                </button>
+  <button
+    onClick={() => removeFromCart(ci.slug)}
+    className="mt-2 text-red-600 hover:text-red-800"
+  >
+    Remover
+  </button>
 
+  <div className="mt-2 text-sm">
+  <p className="font-medium">
+    Precio unitario: { ci.priceOferta && ci.price === ci.priceOferta ? (
+      <>
+        <span className="line-through text-gray-400 mr-1">${ci.priceOriginal?.toFixed(2)}</span>
+        <span className="text-red-600 font-semibold">${ci.price.toFixed(2)}</span>
+      </>
+    ) : (
+      <span>${ci.price.toFixed(2)}</span>
+    )}
+  </p>
 
-                <p className="mt-2 font-medium">
-                  ${(ci.price * ci.quantity).toFixed(2)}
-                </p>
-              </div>
+  <p className="font-medium">
+    Subtotal: ${(ci.price * ci.quantity).toFixed(2)}
+  </p>
+</div>
+
+</div>
+
 
             </div>
           </div>
@@ -98,7 +120,7 @@ export default function CartPage() {
           >
             Verificar
           </Link>
-        </div>
+        </div>  
       </div>
     </div>
   );

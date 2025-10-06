@@ -13,6 +13,9 @@ export * from './product/quantity-selector/QuantitySelector';
 export * from './products/product-grid/ProductGrid';
 export * from './products/product-grid/ProductGridItem';
 
+export * from './productsOfertas/products-ofertas/ProductOfertas';
+export * from './productsOfertas/products-ofertas/ProductItemOfertas';
+
 export * from './context/CartContext';
 export * from './context/AddressContext';
 

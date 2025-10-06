@@ -3,6 +3,8 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+const IVA = 0.05 ;
+
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -15,14 +17,14 @@ export async function POST(request) {
       mode: 'payment',
       line_items: items.map((item) => ({
         price_data: {
-          currency: 'uyu',
+          currency: 'uyu', 
           product_data: {
             name: item.title,
             images: item.images?.[0]
               ? [`${origin}/products/${item.images[0]}`]
               : [],
           },
-          unit_amount: Math.round(item.price * 100),
+          unit_amount: Math.round(item.price * (1 + IVA) * 100),
         },
         quantity: item.quantity,
       })),

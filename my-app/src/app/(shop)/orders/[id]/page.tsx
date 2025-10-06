@@ -43,6 +43,7 @@ export default function WatchOrder() {
           orderId: order.id,
         }),
       });
+      // console.log(`AQUIIII: ${order.items} + ${order.id}`)
 
       const data = await response.json();
 
@@ -56,7 +57,7 @@ export default function WatchOrder() {
       alert('Error procesando el pago');
     }
   };
-
+ 
   return (
     <div className="flex justify-center items-start px-4 py-8 mb-20">
       <div className="w-full max-w-4xl space-y-8 layerblack shadow-md rounded-md p-6">
