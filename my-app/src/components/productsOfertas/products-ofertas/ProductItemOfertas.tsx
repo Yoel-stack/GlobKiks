@@ -41,7 +41,7 @@ export const ProductItemOfertas = ({ product }:Props ) => {
               <span className="line-through text-gray-500 mr-2">
                 ${product.priceOriginal}
               </span>
-              <span className="text-red-600 font-bold">
+              <span className="text-red-600">
                 ${product.priceOferta}
               </span>
             </>

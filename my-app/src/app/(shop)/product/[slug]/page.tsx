@@ -28,14 +28,14 @@ export default function SlugPage (){
     
     const product = initialData.products.find( p => p.slug === slug)!; //find devuelve el primer elemento del array proporcionado que cumple con la función de prueba!
     
-    //if
+    
     const [qty, setQty] = useState(1)
     const [size, setSize] = useState(product.sizes[0]);
 
     const isOferta = isProductInOferta(product);
 
     useEffect(() => {
-        // console.log('Carrito actual:', cart);
+
     const savedSize = localStorage.getItem(`selectedSize-${slug}`);
     if (savedSize) {
         setSize(savedSize as ValidSizes);
@@ -45,12 +45,7 @@ export default function SlugPage (){
     const hendleAdd = () => {
       const finalPrice = isOferta ? product.priceOferta : product.price;
 
-    //   console.log(
-    //     "Agregando al carrito con precio:",
-    //     finalPrice,
-    //     "isOferta:",
-    //     isOferta
-    //   );
+
 
       addToCart({
         ...product,
@@ -98,12 +93,12 @@ export default function SlugPage (){
                 <span className="line-through text-gray-400 mr-2">
                   ${product.price}
                 </span>
-                <span className="text-red-600 font-bold">
+                <span className="text-red-600 ">
                   ${product.priceOferta}
                 </span>
               </>
             ) : (
-              <span className="text-black font-semibold">${product.price}</span>
+              <span className="text">${product.price}</span>
             )}
           </p>
 

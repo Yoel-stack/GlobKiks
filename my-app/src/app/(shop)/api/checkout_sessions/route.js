@@ -39,5 +39,5 @@ export async function POST(request) {
       JSON.stringify({ error: 'Error creando sesión de Stripe' }),
       { status: 500 }
     );
-  }
-}
+  };
+};
