@@ -53,7 +53,7 @@ export const ProductGridItem = ({ product }:Props ) => {
                 <span className="line-through text-gray-400 mr-1">
                   ${product.price.toFixed(2)}
                 </span>
-                <span className="text-red-600 font-bold">
+                <span className="text-red-600">
                   ${product.priceOferta.toFixed(2)}
                 </span>
               </>
