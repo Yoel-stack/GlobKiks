@@ -1,6 +1,6 @@
 export interface Product {
     description: string;
-    images: string[];
+    images: string[]; 
     inStock: number;
     price: number;
     priceOferta: number,

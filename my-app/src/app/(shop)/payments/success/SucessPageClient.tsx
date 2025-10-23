@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { UseOrder } from "@/components/orderContext/OrderContext";
 
+
 export default function SuccessPage() {
 
   const { orders, markOrderAsPaid } = UseOrder();
@@ -23,7 +24,7 @@ export default function SuccessPage() {
 
   if (!orderId) {
     return <p>Falta el ID de la orden</p>;
-  }
+  };
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4">
@@ -42,4 +43,4 @@ export default function SuccessPage() {
       </button>
     </div>
   );
-}
+};

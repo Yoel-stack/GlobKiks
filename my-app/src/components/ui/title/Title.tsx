@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 interface Props {
     title: string ;
     subtitle?: string ;
     className?: string ;
-}
+};
 
 export const Title = ({title, subtitle}: Props) => {
   return (
@@ -19,4 +19,4 @@ export const Title = ({title, subtitle}: Props) => {
         }
     </div>
   )
-}
+};

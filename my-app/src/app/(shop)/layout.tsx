@@ -1,6 +1,5 @@
-
 import { TopMenu, Sidebar, OrderProvider } from "@/components";
-import {Footer} from "@/components/ui/footer/Footer";
+import { Footer } from "@/components/ui/footer/Footer";
 import { AddressProvider } from "@/components";
 
 
@@ -18,10 +17,10 @@ export default function ShopLayout({
 
           <div className="p-3 p-sm-10">{children}</div>
         </main>
-          <main>
+        <main>
           <Footer />
-          </main>
+        </main>
       </AddressProvider>
     </OrderProvider>
   );
-}
+};

@@ -1,7 +1,4 @@
-/* Cuando usamos un hook, una herramienta debemos usar un 'use client' */
-
-'use client';
-
+"use client"; /* Cuando usamos un hook, una herramienta debemos usar un 'use client' */
 
 import Image from "next/image";
 import Link from "next/link";
@@ -13,17 +10,16 @@ interface Props {
     product: Product;
 } 
 
-
 export const ProductGridItem = ({ product }:Props ) => {
 
     const [displayImage, setDisplayImage] = useState (product.images[0]);  
 
-      const currentMonth = new Date().getMonth() + 1;
+    const currentMonth = new Date().getMonth() + 1;
 
-  const isOferta =
-    typeof product.priceOferta === 'number' &&
-    product.priceOferta < product.price &&
-    product.mesOferta === currentMonth;
+    const isOferta =
+      typeof product.priceOferta === "number" &&
+      product.priceOferta < product.price &&
+      product.mesOferta === currentMonth;
 
     return (
       <div className="place-items-center ml-3 p-2 rounded-md">
@@ -53,7 +49,7 @@ export const ProductGridItem = ({ product }:Props ) => {
                 <span className="line-through text-gray-400 mr-1">
                   ${product.price.toFixed(2)}
                 </span>
-                <span className="text-red-600 font-bold">
+                <span className="text-red-600">
                   ${product.priceOferta.toFixed(2)}
                 </span>
               </>

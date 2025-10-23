@@ -1,4 +1,5 @@
 export default function CancelPage() {
+  
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4">
       <h1 className="text-3xl font-bold text mb-4">Pago cancelado!</h1>
@@ -10,4 +11,4 @@ export default function CancelPage() {
       </p>
     </div>
   );
-}
+};

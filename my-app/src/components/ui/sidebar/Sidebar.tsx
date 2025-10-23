@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { useUIStore } from "@/store";
 import { SignUpButton, ClerkProvider, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import SearchSideBar from "@/components/searchsidebar/SearchSideBar";
-import ThemeToggle from "@/components/theme/ThemeToggler";
+import ThemeToggle from "@/components/theme/ThemeToggler"; 
 
 
 
@@ -58,7 +58,7 @@ export const Sidebar = () =>  {
           </div>
           {/* Input */}
           <div>
-            <SearchSideBar onCloseMenu={closeMenu} />
+            <SearchSideBar onCloseMenu={closeMenu} /> 
           </div>
           {/* Menu */}
           <nav

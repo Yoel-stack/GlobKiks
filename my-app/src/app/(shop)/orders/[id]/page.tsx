@@ -43,7 +43,7 @@ export default function WatchOrder() {
           orderId: order.id,
         }),
       });
-      // console.log(`AQUIIII: ${order.items} + ${order.id}`)
+
 
       const data = await response.json();
 
@@ -160,4 +160,4 @@ export default function WatchOrder() {
       </div>
     </div>
   );
-}
+};

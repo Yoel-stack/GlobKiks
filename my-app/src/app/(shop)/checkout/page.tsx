@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useAddress, QuantitySelector, Title } from "@/components";
 import { UseOrder } from "@/components/orderContext/OrderContext";
@@ -136,17 +136,17 @@ export default function CheckoutPage() {
 
           <p className="text-xs mt-4">
             Al hacer click en “Colocar orden”, aceptas nuestros{" "}
-            <a href="#" className="underline">
+            <a href="/conditions/terms" className="underline">
               términos y condiciones
             </a>{" "}
             y{" "}
-            <a href="#" className="underline">
+            <a href="/conditions/privacy" className="underline">
               política de privacidad
             </a>
           </p>
 
           <Link
-            href="/checkout/address"
+            href="/"
             className="mt-2 block bg-blue-600 text-decoration-none hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded text-center"
           >
             <button onClick={placeOrder}>Colocar orden</button>

@@ -13,14 +13,14 @@ interface Order {
   subTotal: number;
   taxes: number;
   paid: boolean;
-}
+};
 
 interface OrderContextType {
   orders: Order[];
   addOrder: (order: Order) => void;
   markOrderAsPaid: (orderId: string) => void;
   deleteOrder: (orderId: string) => void;
-}
+};
 
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined);
@@ -42,7 +42,6 @@ export function OrderProvider({ children }: { children: ReactNode }) {
   setOrders(updatedOrders);
   localStorage.setItem('orders', JSON.stringify(updatedOrders));
 };
-
 
   // Marcar orden como pagada
   const markOrderAsPaid = (orderId: string) => {
@@ -70,7 +69,7 @@ export function OrderProvider({ children }: { children: ReactNode }) {
       {children}
     </OrderContext.Provider>
   );
-}
+};
 
 
 export function UseOrder(): OrderContextType {

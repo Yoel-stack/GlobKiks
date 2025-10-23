@@ -1,14 +1,12 @@
-'use client';
+"use client";
 
 import { useCart, QuantitySelector, Title } from "@/components";
 import Link from "next/link";
 import Image from "next/image";
-// // import { redirect } from "next/navigation";
+
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity } = useCart();
-
-  console.log('Contenido del carrito:', cart);
 
   const totalItems = cart.reduce((sum, i) => sum + i.quantity, 0);
   const subTotal = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
@@ -21,9 +19,7 @@ export default function CartPage() {
       <p className="text-center text py-10">No hay productos en el carrito</p>
     )
   }
-  
-  // redirect('/empty'); //te lleva denuevo al carrito de compras vacio, redirecciona 
-  
+    
   return (
     <div className="flex text justify-center items-start px-4 py-8">
       <div className="w-full max-w-4xl">
@@ -47,7 +43,7 @@ export default function CartPage() {
               {/* Imagen */}
               <Image
                 src={`/products/${ci.images[0]}`}
-                width={100}
+                width={140}
                 height={100}
                 alt={ci.title}
                 className="rounded flex-shrink-0"

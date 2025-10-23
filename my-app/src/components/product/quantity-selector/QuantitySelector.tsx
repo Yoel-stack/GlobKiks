@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-// import { count, countReset } from "console";
+    
 import { useEffect, useState } from "react";
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
 
-interface QtyProps {
+interface QtyProps { 
     quantity: number;
     onChange: (newQty: number) => void;
-}
+};
 
-//Quita 1, agrega 1
+// Quita y agrega 1
 export const QuantitySelector = ({ quantity, onChange }: QtyProps) => {
 
     const [ count, setCount ] = useState( quantity);
@@ -23,7 +23,7 @@ export const QuantitySelector = ({ quantity, onChange }: QtyProps) => {
     const newCount = count + value;
     setCount(newCount);
     onChange(newCount);
-    }
+    };
     
 return (
     <div className="flex pb-4">

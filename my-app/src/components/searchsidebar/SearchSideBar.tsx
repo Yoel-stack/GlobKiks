@@ -1,58 +1,55 @@
-'use client';
+"use client";
 
 import React, { useState, useRef, useMemo, useEffect } from "react";
-import Fuse from "fuse.js";
-import debounce from 'lodash.debounce'; //Eso significa que si escribes "naike", se hacen 6 búsquedas en menos de 1 segundo. Eso gasta recursos innecesariamente y puede provocar saltos, lags o bugs visuales.
+import debounce from 'lodash.debounce';
 import Link from "next/link";
-import { initialData } from "@/seed";
+
 import { Product } from "@/interfaces";
 
-interface SearchAutocompleteProps {
+interface SearchSideBarProps {
   onCloseMenu?: () => void;
-}
+};
 
-export default function SearchSideBar({ onCloseMenu }: SearchAutocompleteProps) {
-  const products = initialData.products as Product[];
-
-  const fuse = useMemo(() => {
-    return new Fuse(products, {
-      keys: ["title", "description", "tags"],
-      threshold: 0.3,
-      includeScore: true,
-      minMatchCharLength: 1,
-    });
-  }, [products]);
-
+export default function SearchSideBar({ onCloseMenu }: SearchSideBarProps) {
   const [results, setResults] = useState<Product[]>([]);
   const [query, setQuery] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const debounced = useMemo (
-    () => { return debounce((val: string) => { if (!val) {
-      setResults(products.slice(0, 0));
-    } else {
-      const found = fuse.search(val, { limit:4}).map(r => r.item);
-      setResults(found);
+  const fetchProducts = async (val: string) => {
+    if (!val) {
+      setResults([]);
+      return;
     }
-  }, 250);
-}, [fuse, products]);
+
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
+      const data = await res.json();
+      setResults(data);
+    } catch (error) {
+      console.error("Error al buscar productos:", error);
+    }
+  };
+
+  const debouncedSearch = useMemo(() => {
+    return debounce(fetchProducts, 300);
+  }, []);
 
   useEffect(() => {
     return () => {
-      debounced.cancel();
+      debouncedSearch.cancel();
     };
-  }, [debounced]);
+  }, [debouncedSearch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     setQuery(val);
-    debounced(val);
+    debouncedSearch(val);
   };
 
   const handleFocus = () => {
     setShowDropdown(true);
-    debounced("");
+    debouncedSearch(query);
   };
 
   const handleBlur = () => {
@@ -62,6 +59,8 @@ export default function SearchSideBar({ onCloseMenu }: SearchAutocompleteProps) 
   return (
     <div className="relative w-full">
       <input
+        spellCheck={false}  // Desactiva el autocorrector ortografico
+        autoCorrect="off"
         ref={inputRef}
         type="text"
         value={query}
@@ -70,22 +69,15 @@ export default function SearchSideBar({ onCloseMenu }: SearchAutocompleteProps) 
         onBlur={handleBlur}
         onChange={handleChange}
         className="flex text-center w-full text-gray-600 rounded border-b-2 text-xl border-gray-500 focus:outline-none focus:border-blue-500"
-      />     
+      />
       {showDropdown && results.length > 0 && (
-        <ul className="z-20 px-2 py-2 border rounded shadow mt-1 overflow-auto">
+        <ul className="z-20 p-2 cardcolor rounded shadow mt-1 overflow-auto">
           {results.map((p) => (
-            <li key={p.slug} >
-              <Link
-                className="text-decoration-none"
-                href={`/product/${p.slug}`}
-              >
-                <main onClick={onCloseMenu}>
-                  <div className="flex items-center">
-                    <div className="text-left text-sm hover text">
-                      {p.title}
-                    </div>
-                  </div>
-                </main>
+            <li key={p.slug}>
+              <Link className= "text-decoration-none" href={`/product/${p.slug}`} onClick={onCloseMenu}>
+                <div className="flex text items-center text-left text-sm hover">
+                  {p.title}
+                </div>
               </Link>
             </li>
           ))}
@@ -93,4 +85,4 @@ export default function SearchSideBar({ onCloseMenu }: SearchAutocompleteProps) 
       )}
     </div>
   );
-}
+};

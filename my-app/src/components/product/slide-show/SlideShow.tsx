@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Swiper, SwiperSlide } from "swiper/react"; //componente Swiper de React
 import { Swiper as SwiperObjet } from "swiper"; //SwiperObjet 'sustituye' a Swiper, componente de react, SwiperObjet va a tener toda la funcionalidad del objeto Swiper

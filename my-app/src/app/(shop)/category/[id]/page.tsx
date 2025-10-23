@@ -1,17 +1,26 @@
-import { ProductGrid, Title } from "@/components";
+import { ProductGrid, Title, transformRawProduct } from "@/components";  
 import { ValidCatergories } from "@/interfaces";
-import { initialData } from "@/seed";
+import { prisma } from "@/lib/prisma";
 
-const categoryProducts = initialData.products;
-
-interface Props {
-  params: Promise<{id: ValidCatergories //id porque le pasa la id del producto... validCategories
+  
+type PageProps = {
+  params: Promise<{
+    id: ValidCatergories; // ID porque le pasa la id del producto -> ValidCategories
   }>;
-}
+};
 
-export default async function categoryPage({ params }: Props) {
+export default async function CategoryPage({ params }: PageProps) {
+  
   const { id } = await params;
-  const products = categoryProducts.filter((product) => product.gender === id);
+
+  const productsFromDb = await prisma.product.findMany({
+    where: {
+      gender: id, // Consultamos a nuestra base de datos 
+
+    },
+  });
+
+  const products = productsFromDb.map(transformRawProduct);
 
   const idS = {
     mujeres: "para mujeres",
@@ -29,5 +38,5 @@ export default async function categoryPage({ params }: Props) {
       <ProductGrid products={products} />
     </>
   );
-}
+};
 

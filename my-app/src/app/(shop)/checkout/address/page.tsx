@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Title, useAddress } from '@/components';
 import { useRouter } from 'next/navigation';

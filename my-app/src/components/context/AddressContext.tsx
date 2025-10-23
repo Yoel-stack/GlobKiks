@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { Address } from '@/interfaces/product.interface';
@@ -18,10 +18,10 @@ export function AddressProvider({ children }: { children: ReactNode }) {
       {children}
     </AddressContext.Provider>
   );
-}
+};
 
 export function useAddress() {
   const ctx = useContext(AddressContext);
   if (!ctx) throw new Error('useAddress debe usarse dentro de AddressProvider');
   return ctx;
-}
+};

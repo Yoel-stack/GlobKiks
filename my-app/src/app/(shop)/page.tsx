@@ -1,15 +1,19 @@
 import { ProductGrid, Title } from "@/components";
-import { initialData } from "@/seed";
+import { prisma } from "@/lib/prisma";
+import { transformRawProduct } from "@/components/helpers/transformProduct"; // Creamos un helper para que me quede mas ordenado el productGrid
 
 
-const products = initialData.products;
+export default async function Home() {
+  
+  const productsFromDb = await prisma.product.findMany();
 
+  const products = productsFromDb.map(transformRawProduct);
 
-export default function Home() {
   return (
     <>
       <Title title="Tienda" subtitle="Todos los championes" className="mb-3" />
       <ProductGrid products={products} />
-    </>
+    </> 
   );
-}
+};
+

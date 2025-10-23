@@ -32,7 +32,7 @@
     --navbar-color: 18 18 18;
     --bg-infocard-color: 13 13 13;
     --background-end-rgb: 0 0 0;
-    --background-start-rgb: 64 62 62;
+    --background-start-rgb: 33 33 33;
   }
 
   /* aplico variables para despues agregarlas al className */
@@ -52,7 +52,6 @@
     background-color: rgb(var(--hover-color));
     border-radius: 4px;
   }
-  /* Falta aplicar */
   .sidebar {
     background-color: rgb(var(--navbar-color)); 
   }

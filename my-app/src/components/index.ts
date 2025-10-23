@@ -7,6 +7,7 @@ export * from './ui/footer/Footer';
 export * from './product/slide-show/SlideShowMobile';
 export * from './product/slide-show/SlideShow';
 
+export * from './product/products-details/ProductsDetails';
 export * from './product/size-selector/SizeSelect';
 export * from './product/quantity-selector/QuantitySelector';
 
@@ -24,3 +25,5 @@ export * from './orderContext/OrderContext';
 export * from './searchsidebar/SearchSideBar';
 
 export * from './theme/ThemeProvider';
+
+export * from './helpers/transformProduct';

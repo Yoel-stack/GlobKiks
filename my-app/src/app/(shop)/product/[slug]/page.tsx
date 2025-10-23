@@ -1,126 +1,33 @@
-'use client'
+import { prisma } from "@/lib/prisma";
+import ProductDetails from "@/components/product/products-details/ProductsDetails";
+import { transformRawProduct } from "@/components/helpers/transformProduct";
+import type { Product } from "@/interfaces";
 
-import { useCart, QuantitySelector, SlideShow, SizeSelect, SlideShowMobile} from "@/components";
-import { titleFont } from "@/config/fonts";
-import { initialData } from "@/seed";
-import { toast } from 'react-toastify';
-
-//importar hook
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { Product, ValidSizes } from "@/interfaces";
-
-
-const isProductInOferta = (product: Product): boolean => {
-  const currentMonth = new Date().getMonth() + 1;
-
-  return (
-    typeof product.priceOferta === 'number' &&
-    product.priceOferta < product.price &&
-    product.mesOferta === currentMonth
-  );
+type PageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
 };
 
-export default function SlugPage (){
-    const { slug } = useParams<{ slug: string }>();
+export default async function ProductPage({ params }: PageProps) {
 
-    const { addToCart } = useCart();
-    
-    const product = initialData.products.find( p => p.slug === slug)!; //find devuelve el primer elemento del array proporcionado que cumple con la función de prueba!
-    
-    
-    const [qty, setQty] = useState(1)
-    const [size, setSize] = useState(product.sizes[0]);
+  const { slug } = await params;
 
-    const isOferta = isProductInOferta(product);
+  
+  const rawProduct = await prisma.product.findUnique({
+    where: { slug },
+  });
 
-    useEffect(() => {
+  if (!rawProduct) {
+    return <div className="text-center text py-10"> Producto no encontrado </div>;
+  }
 
-    const savedSize = localStorage.getItem(`selectedSize-${slug}`);
-    if (savedSize) {
-        setSize(savedSize as ValidSizes);
-    }
-    }, [slug]);
+  let product: Product;
+  try {
+    product = transformRawProduct(rawProduct);
+  } catch {
+    return <div className="text-center text-red-600 py-10"> Error al cargar el producto </div>;
+  }
 
-    const hendleAdd = () => {
-      const finalPrice = isOferta ? product.priceOferta : product.price;
-
-
-
-      addToCart({
-        ...product,
-        price: finalPrice,
-        priceOferta: product.priceOferta,
-        priceOriginal: product.price,
-        quantity: qty,
-        selectedSize: size,
-      });
-      toast.success("Artículo agregado al carrito");
-    };
-
-    const handleSizeChange = (newSize: ValidSizes) => {
-      setSize(newSize);
-      localStorage.setItem(`selectedSize-${slug}`, newSize);
-    };
-    
-    
-    return (
-      <div className="text mt-3 mb-20 sm:grid md:grid-cols-3 gap-3">
-        {/* PRODUCT IMG Mobile */}
-        <div className="col-span-1 p-2 md:col-span-2">
-          <SlideShowMobile
-            title={product.title}
-            images={product.images}
-            className="block md:hidden"
-          />
-
-          {/* PRODUCT IMG  */}
-          <SlideShow
-            title={product.title}
-            images={product.images}
-            className="hidden md:block"
-          />
-        </div>
-
-        {/* PRODUCT DETALLES */}
-        <div className="my-5 col-span-1 p-3">
-          <h1 className={`${titleFont.className} font-bold text-xl`}>
-            {product?.title}
-          </h1>
-          <p className="text-xl">
-            {isOferta ? (
-              <>
-                <span className="line-through text-gray-400 mr-2">
-                  ${product.price}
-                </span>
-                <span className="text-red-600 ">
-                  ${product.priceOferta}
-                </span>
-              </>
-            ) : (
-              <span className="text">${product.price}</span>
-            )}
-          </p>
-
-          {/* Selector de Tallas */}
-          <SizeSelect
-            selectedSize={size}
-            onChange={handleSizeChange}
-            avaliableSize={product.sizes}
-          />
-
-          {/* Selector de Cantidad */}
-          <QuantitySelector quantity={qty} onChange={setQty} />
-
-          {/* Button */}
-          <button onClick={hendleAdd} className="agregarCarrito">
-            Agregar al Carrito
-          </button>
-
-          {/* Descripcion */}
-          <h3 className="my-2 mt-3 text-sm ">Descripcion</h3>
-          <p className="font-lihgt mx-1">{product?.description}</p>
-        </div>
-      </div>
-    );
-};
+  return <ProductDetails product={product} />;
+}; 
