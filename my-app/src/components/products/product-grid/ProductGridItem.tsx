@@ -8,7 +8,7 @@ import { useState } from "react";
 
 interface Props {
     product: Product;
-} 
+}; 
 
 export const ProductGridItem = ({ product }:Props ) => {
 

@@ -5,7 +5,7 @@ import { ProductGridItem } from './ProductGridItem';
 
 interface Props {
     products: Product[];
-}
+};
 
 export const ProductGrid = ({products}:Props) => {
   return (
