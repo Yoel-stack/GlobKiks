@@ -12,7 +12,7 @@ export default async function Ofertas() {
           gt: 0, // Para que no traiga productos sin oferta o con precio 0
         },
         mesOferta: currentMonth,
-      },
+      }, 
       orderBy: {
         createdAt: "desc",
       },
