@@ -37,22 +37,5 @@ export default async function Ofertas() {
     );
 };
 
-    products = filteredProducts.map(transformRawProduct);
-  } catch (error) {
-    console.error("Error fetching offers:", error);
-    // products queda vacío si falla la DB
-  }
-
-  return (
-    <>
-      <Title
-        title="Ofertas del mes"
-        subtitle="Todos los championes en oferta!"
-        className="mb-3"
-      />
-      <Productofertas products={products} />
-    </>
-  );
-}
 
 
