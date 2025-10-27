@@ -1,19 +1,25 @@
 import { ProductGrid, Title } from "@/components";
 import { prisma } from "@/lib/prisma";
-import { transformRawProduct } from "@/components/helpers/transformProduct"; // Creamos un helper para que me quede mas ordenado el productGrid
+import { transformRawProduct } from "@/components/helpers/transformProduct";
 
+// Forzamos SSR, no SSG
+export const revalidate = 0;
 
 export default async function Home() {
-  
-  const productsFromDb = await prisma.product.findMany();
+  let products = [];
 
-  const products = productsFromDb.map(transformRawProduct);
+  try {
+    const productsFromDb = await prisma.product.findMany();
+    products = productsFromDb.map(transformRawProduct);
+  } catch (error) {
+    console.error("Error fetching products for Home:", error);
+  }
 
   return (
     <>
       <Title title="Tienda" subtitle="Todos los championes" className="mb-3" />
       <ProductGrid products={products} />
-    </> 
+    </>
   );
-};
+}
 
