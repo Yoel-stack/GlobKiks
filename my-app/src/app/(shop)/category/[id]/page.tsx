@@ -20,7 +20,7 @@ export default async function CategoryPage({ params }: PageProps) {
     },
   });
 
-  const products = productsFromDb.map(transformRawProduct);
+  const products = productsFromDb.map(transformRawProduct); 
 
   const idS = {
     mujeres: "para mujeres",
