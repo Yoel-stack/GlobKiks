@@ -52,7 +52,7 @@
 //       </div>
 //     );
 // };
-"use client"; // necesario para usar useState
+"use client"; 
 
 import Image from "next/image";
 import Link from "next/link";
