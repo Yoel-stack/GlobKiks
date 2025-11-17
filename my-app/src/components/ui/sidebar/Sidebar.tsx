@@ -18,7 +18,7 @@ export const Sidebar = () =>  {
 
   const closeMenu = useUIStore((state) => state.closeSideMenu);
 
-  const categories = [
+  const categories = [  
     { label: "Mujeres", href: "/category/mujeres" },
     { label: "Hombres", href: "/category/hombres" },
     { label: "Unisex", href: "/category/unisex" },
@@ -83,6 +83,7 @@ export const Sidebar = () =>  {
           <Link
             href="/orders"
             className="flex text items-center p-1 mt-4 hover text-black text-decoration-none rounded transition-all"
+            onClick={() => closeMenu()}
           >
             <IoTicketOutline size={20} />
             <span className="ml-3 text-xl">Ordenes</span>
@@ -93,6 +94,7 @@ export const Sidebar = () =>  {
           <Link
             href="/"
             className="flex items-center mt-4 p-1 hover text text-decoration-none rounded transition-all"
+            onClick={() => closeMenu()}
           >
             <IoShirtOutline size={20} />
             <span className="ml-3 text-xl">Productos</span>
@@ -127,6 +129,7 @@ export const Sidebar = () =>  {
           <Link
             href="/ofertas"
             className="flex items-center mt-4 p-1 text hover text-decoration-none rounded transition-all"
+            onClick={() => closeMenu()}
           >
             <IoPricetagOutline size={20} />
             <span className="w-7 h-7 ml-3 text-xl">Ofertas</span>

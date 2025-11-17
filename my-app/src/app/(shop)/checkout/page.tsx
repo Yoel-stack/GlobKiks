@@ -12,10 +12,12 @@ export default function CheckoutPage() {
   
   const router = useRouter();
   const { addOrder} = UseOrder();
+  const { clearCart } = useCart();
   
   const placeOrder = () => {
     const id = Math.random().toString(36).substr(2, 9);
     addOrder({ id, items: cart, address, total, subTotal, taxes, paid: false });
+    clearCart();
     router.push(`/orders/${id}`);
   };      
   
@@ -148,7 +150,7 @@ export default function CheckoutPage() {
           <Link
             href="/"
             className="mt-2 block bg-blue-600 text-decoration-none hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded text-center"
-          >
+          >    
             <button onClick={placeOrder}>Colocar orden</button>
           </Link>
         </div>

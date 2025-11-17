@@ -23,7 +23,7 @@ export default function CartPage() {
   return (
     <div className="flex text justify-center items-start px-4 py-8">
       <div className="w-full max-w-4xl">
-        <Title title="Carrito" />
+        <Title title="Carrito" />  
 
         {/* Enlace para volver al catálogo */}
         <div className="mb-8">

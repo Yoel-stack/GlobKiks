@@ -9,19 +9,19 @@ datasource db {
 }
 
 model Product {
-  id           Int      @id @default(autoincrement())
-  title        String
-  slug         String   @unique
-  description  String
-  price        Float
-  priceOferta  Float
-  mesOferta    Int
-  inStock      Int
-  gender       String
-  type         String
-  sizes        Json 
-  tags         Json 
-  images       Json 
-  createdAt    DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  description String
+  price       Float
+  priceOferta Float
+  mesOferta   Int
+  inStock     Int
+  gender      String
+  type        String
+  sizes       Json
+  tags        Json
+  images      Json
+  createdAt   DateTime @default(now())
 }
-
+  
