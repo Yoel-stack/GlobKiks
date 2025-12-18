@@ -17,7 +17,7 @@ export const Sidebar = () =>  {
   const [openCategories, setOpenCategories] = useState(false);  //Menu de categorias
 
   const closeMenu = useUIStore((state) => state.closeSideMenu);
-
+  
   const categories = [  
     { label: "Mujeres", href: "/category/mujeres" },
     { label: "Hombres", href: "/category/hombres" },

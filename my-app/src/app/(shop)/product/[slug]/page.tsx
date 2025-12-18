@@ -6,7 +6,7 @@ import type { Product } from "@/interfaces";
 type PageProps = {
   params: Promise<{
     slug: string;
-  }>;
+  }>;  
 };
 
 export default async function ProductPage({ params }: PageProps) {

@@ -12,7 +12,7 @@ export interface Product {
     sizes: ValidSizes[];
     type: ValidTypes;
     gender: ValidCatergories;
-};
+}; 
 
 export type ValidCatergories = 'mujeres'|'hombres'|'unisex';
 export type ValidTypes = 'futbol'|'correr'|'casual';

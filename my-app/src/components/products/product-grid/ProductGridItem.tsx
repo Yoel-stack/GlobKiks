@@ -6,7 +6,7 @@ import { Product } from "@/interfaces";
 import { useState } from "react";
 
 
-interface Props {
+interface Props { 
     product: Product;
 } 
 

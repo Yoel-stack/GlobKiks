@@ -26,7 +26,7 @@ export const SlideShow = ({ images, title, className }: Props) => {
   return (
     <div className={className}>
       <Swiper
-        style={
+        style={ 
           {
             "--swiper-navigation-color": "#fff",
             "--swiper-pagination-color": "#fff",
@@ -45,7 +45,7 @@ export const SlideShow = ({ images, title, className }: Props) => {
               width={1000}
               height={800}
               src={`/products/${images}`}
-              alt={title} //!!
+              alt={title} 
               className="rounded-lg objet-fill"
             />
           </SwiperSlide>

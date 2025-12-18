@@ -11,7 +11,7 @@ type PageProps = {
 
 export default async function CategoryPage({ params }: PageProps) {
   
-  const { id } = await params;
+  const { id } = await params;  
 
   const productsFromDb = await prisma.product.findMany({
     where: {
@@ -23,7 +23,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const products = productsFromDb.map(transformRawProduct); 
 
   const idS = {
-    mujeres: "para mujeres",
+    mujeres: "para mujeres", 
     hombres: "para hombres",
     unisex: "unisex",
   };

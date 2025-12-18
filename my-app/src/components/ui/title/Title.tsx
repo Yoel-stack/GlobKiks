@@ -16,7 +16,7 @@ export const Title = ({title, subtitle}: Props) => {
                     {subtitle}
                 </h3>
             )
-        }
+        };
     </div>
   )
 };

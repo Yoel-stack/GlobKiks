@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export const metadata: Metadata = {
   title: "GlobKiks",
   description: "Una tienda virtual de championes",
-};
+}; 
 
 export default function RootLayout({
   children,

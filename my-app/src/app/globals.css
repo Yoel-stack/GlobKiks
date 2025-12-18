@@ -59,7 +59,7 @@
     background-color: rgb(var(--navbar-color));
     transition: background-color .3s;
   }
-}
+} 
 
 @layer base {
   body {
