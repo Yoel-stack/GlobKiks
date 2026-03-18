@@ -5,6 +5,7 @@ import { IoCartOutline, IoMenuOutline } from "react-icons/io5";
 import Link from "next/link";
 import { useUIStore } from "@/store";
 import { useCart } from "@/components/context/CartContext";
+import Image from "next/image";
 
 
 export const TopMenu = () => {
@@ -24,8 +25,17 @@ export const TopMenu = () => {
       <nav className="navbar shadow-xl">
         <div className="container mx-auto flex items-center justify-between py-4">
           
-          <Link href="/" className="text text-xl text-decoration-none">
+          {/* <Link href="/" className="text text-xl text-decoration-none">
             GlobKiks
+          </Link> */}
+
+          <Link href="/" className="mx-3">
+          <Image
+          src="/logoglobkiks.png"
+          alt="Globkiks Logo"
+          width={70}
+          height={70}
+          />
           </Link>
 
           {/* Menú principal oculto solo en XS, visible en SM o mayor */}

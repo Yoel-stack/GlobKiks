@@ -22,7 +22,7 @@ export const ProductGridItem = ({ product }:Props ) => {
       product.mesOferta === currentMonth;
 
     return (
-      <div className="place-items-center ml-3 p-2 rounded-md">
+      <div className="place-items-center p-2 rounded-md">
         <Link className="flex" href={`/product/${product.slug}`}>
           <Image
             src={`/products/${displayImage}`}

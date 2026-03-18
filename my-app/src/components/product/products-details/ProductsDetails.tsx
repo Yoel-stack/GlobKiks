@@ -30,7 +30,7 @@ export default function ProductDetails({ product }: Props) {
     const savedSize = localStorage.getItem(`selectedSize-${product.slug}`);
     if (savedSize) {
       setSize(savedSize as ValidSizes);
-    }
+    } 
   }, [product.slug]);
 
   const handleAdd = () => {
