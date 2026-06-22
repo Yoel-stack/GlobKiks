@@ -11,10 +11,12 @@ export default async function Home() {
 
   return (
     <>
-      <Title title="Tienda" subtitle="Todos los championes" className="mb-3" />
+      <nav className="p-2 mb-4 flex justify-center text-center">
+        <Title title="" subtitle="Todos los championes" />
+      </nav>
       <ProductGrid products={products} />
-    </> 
-  );
+    </>
+  )
 };
 
 

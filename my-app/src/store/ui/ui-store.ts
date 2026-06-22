@@ -14,3 +14,4 @@ export const useUIStore = create<State>()((set) => ({
     openSideMenu: () => set({ isSideMenuOpen: true }),
     closeSideMenu: () => set({ isSideMenuOpen: false }),
 }))
+ 

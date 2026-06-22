@@ -9,10 +9,10 @@ interface Props {
 export const Title = ({title, subtitle}: Props) => {
   return (
     <div>
-        <h1 className='text p-1 ml-5'>{ title }</h1> 
+        <h1 className='text p-1'>{ title }</h1> 
         {
             subtitle && (
-                <h3 className='text p-1 ml-5'>
+                <h3 className='text p-1'>
                     {subtitle}
                 </h3>
             )

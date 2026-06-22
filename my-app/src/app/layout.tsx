@@ -6,12 +6,12 @@ import { ToastContainer } from 'react-toastify';
 import { esES } from '@clerk/localizations'
 
 import 'react-toastify/dist/ReactToastify.css';
-import "./globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import './globals.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const metadata: Metadata = {
   title: "GlobKiks",
-  description: "Una tienda virtual de championes",
+  description: "Tienda online de championes",
 }; 
 
 export default function RootLayout({

@@ -30,11 +30,9 @@ export default async function CategoryPage({ params }: PageProps) {
 
   return (
     <>
-      <Title
-        title={`Articulos ${idS[id]}`}
-        subtitle="Todos los championes"
-        className=" "
-      />
+      <nav className="p-2 mb-4 flex justify-center text-center">
+        <Title title="" subtitle={`Articulos ${idS[id]}`} />
+      </nav>
       <ProductGrid products={products} />
     </>
   );

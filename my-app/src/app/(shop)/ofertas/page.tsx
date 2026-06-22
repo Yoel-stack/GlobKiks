@@ -27,13 +27,15 @@ export default async function Ofertas() {
 
     return (
       <>
-        <Title
-          title="Ofertas del mes"
-          subtitle="Todos los championes en oferta!"
-          className="mb-3"
-        />
+        <nav className="p-2 mb-4 flex justify-center text-center">
+          <Title
+            title="" 
+            subtitle="Ofertas del mes 🔖"
+            className=""
+          />
+        </nav>
         <Productofertas products={products} />
       </>
-    );
+    )
 };
   

@@ -15,7 +15,7 @@ export default function ShopLayout({
           <TopMenu />
           <Sidebar />
 
-          <div className="p-3 p-sm-10">{children}</div>
+          {children}
         </main>
         <main>
           <Footer />

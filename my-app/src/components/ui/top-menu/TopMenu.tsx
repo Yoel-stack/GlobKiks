@@ -31,15 +31,15 @@ export const TopMenu = () => {
 
           <Link href="/" className="mx-3">
           <Image
-          src="/logoglobkiks.png"
+          src="/logoGlobkiks.png"
           alt="Globkiks Logo"
-          width={70}
-          height={70}
+          width={90}
+          height={90}
           />
           </Link>
 
           {/* Menú principal oculto solo en XS, visible en SM o mayor */}
-          <div className="hidden sm:flex space-x-6 items-center">
+          <div className="hidden sm:flex -ml-10 space-x-6 items-center">
             {categories.map((cat) => (
               <Link key={cat.href} href={cat.href} className="textslow hover p-1 text-decoration-none">
                 {cat.label}
@@ -63,5 +63,5 @@ export const TopMenu = () => {
           </div>
         </div>
       </nav>
-    ); 
+    )
 };

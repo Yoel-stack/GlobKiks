@@ -28,8 +28,8 @@ export const ProductGridItem = ({ product }:Props ) => {
             src={`/products/${displayImage}`}
             alt={product.title}
             className="rounded"
-            width={300}
-            height={300}
+            width={250}
+            height={250}
             onMouseEnter={() => setDisplayImage(product.images[1])}
             onMouseLeave={() => setDisplayImage(product.images[0])}
           />
