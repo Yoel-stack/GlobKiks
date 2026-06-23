@@ -31,7 +31,7 @@ export const TopMenu = () => {
 
           <Link href="/" className="mx-3">
           <Image
-          src="/logoGlobkiks.png"
+          src="/globkikss.png"
           alt="Globkiks Logo"
           width={90}
           height={90}
